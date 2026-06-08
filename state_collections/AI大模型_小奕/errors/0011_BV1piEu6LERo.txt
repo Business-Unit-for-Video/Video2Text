@@ -1,0 +1,6 @@
+item_id: 0011_BV1piEu6LERo
+bvid: BV1piEu6LERo
+title: Codex新手保姆级教程，从安装配置到项目实战，一套视频讲明白！ p11 12.Langchain是什么
+url: https://www.bilibili.com/video/BV1piEu6LERo?p=11
+time: 2026-06-08 23:46:06
+error: CalledProcessError(1, ['yt-dlp', '--cookies', 'cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/AI大模型_小奕/0011_BV1piEu6LERo.%(ext)s', 'https://www.bilibili.com/video/BV1piEu6LERo?p=11'])
