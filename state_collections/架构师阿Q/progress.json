@@ -1,14 +1,10 @@
 {
   "status": "finished",
-  "note": "one video processed, no more pending",
+  "note": "all items completed",
   "destination": "架构师阿Q",
-  "source_url": "https://www.bilibili.com/video/BV1M15Q6eEhL/?spm_id_from=333.1007.tianma.1-1-1.click&vd_source=1333df6f11f8b384c9d06647ecc4b5e8",
+  "source_url": "https://www.bilibili.com/video/BV1GN796nEJ9/?spm_id_from=333.1391.0.0",
   "queue_total": 1,
   "queue_index": 1,
-  "updated_at": 1780275788,
-  "updated_at_readable": "2026-06-01 01:03:08",
-  "current_item_id": "0001_BV1M15Q6eEhL",
-  "current_bvid": "BV1M15Q6eEhL",
-  "current_title": "BV1M15Q6eEhL",
-  "current_url": "https://www.bilibili.com/video/BV1M15Q6eEhL"
+  "updated_at": 1781454467,
+  "updated_at_readable": "2026-06-14 16:27:47"
 }
