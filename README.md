@@ -25,7 +25,7 @@ Video2Text 用 GitHub Actions 自动转写和整理视频字幕，当前采用**
 | `single_video` | `transcribe_single_video.yml` | `source_url`、`destination`、`platform`、`use_cookies`、可选 `whisper_model`。 |
 | `youtube_channel` | `transcribe_youtube_channel.yml` | `source_url`、`destination`、`include_members`、可选 `whisper_model`。 |
 
-统一入口只负责参数校验和分发，不直接转写、不删除旧工作流、不改变旧输出目录。
+统一入口会把新任务写到 `unified_outputs/<source_type>/<destination>/`，旧 workflow 直接运行仍保留原输出目录。
 
 ## 输出目录约定
 
@@ -36,6 +36,7 @@ transcripts/*.txt
 destinations/*/with_timestamps/*.txt
 single_videos/*/with_timestamps/*.txt
 youtube_channels/*/with_timestamps/*.txt
+unified_outputs/*/*/with_timestamps/*.txt
 ```
 
 说明：
@@ -63,6 +64,6 @@ youtube_channels/*/with_timestamps/*.txt
 ## 兼容原则
 
 - 不删除旧 workflow。
-- 不迁移历史输出目录。
-- 不迁移历史 state/续跑文件。
-- 先通过统一入口和辅助统计逐步收敛使用方式。
+- 旧 workflow 直跑保持原输出目录。
+- 统一入口的新任务写入 `unified_outputs/...`。
+- 历史 state/续跑文件不迁移。

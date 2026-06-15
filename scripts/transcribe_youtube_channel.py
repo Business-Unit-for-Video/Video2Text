@@ -61,9 +61,11 @@ def sanitize_key(name: str, max_len: int = 80) -> str:
 
 DESTINATION_RAW = os.getenv("DESTINATION", "").strip()
 DESTINATION = sanitize_key(DESTINATION_RAW or "default")
+OUTPUT_ROOT_RAW = os.getenv("OUTPUT_ROOT", "").strip()
+OUTPUT_ROOT = Path(OUTPUT_ROOT_RAW) if OUTPUT_ROOT_RAW else Path("youtube_channels")
 
 STATE_DIR = Path("state_youtube") / DESTINATION
-OUTPUT_DIR = Path("youtube_channels") / DESTINATION
+OUTPUT_DIR = OUTPUT_ROOT / DESTINATION
 WITH_TS_DIR = OUTPUT_DIR / "with_timestamps"
 PLAIN_DIR = OUTPUT_DIR / "plain"
 TMP_DIR = Path("tmp_audio") / DESTINATION
@@ -410,7 +412,7 @@ def clear_continue():
 
 
 def git_commit_and_push(message: str):
-    git_run(["git", "add", "youtube_channels", "state_youtube"], check=False)
+    git_run(["git", "add", str(OUTPUT_ROOT), "state_youtube"], check=False)
     diff = subprocess.run(["git", "diff", "--cached", "--quiet"])
     if diff.returncode == 0:
         log("[info] no git changes to commit")

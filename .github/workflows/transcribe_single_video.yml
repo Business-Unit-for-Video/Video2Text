@@ -21,6 +21,11 @@ on:
         required: false
         default: true
         type: boolean
+      output_root:
+        description: "统一输出根目录；留空时使用旧目录 single_videos"
+        required: false
+        default: ""
+        type: string
       whisper_model:
         description: "Whisper 模型，如 tiny / base / small / medium"
         required: false
@@ -47,6 +52,7 @@ jobs:
       YOUTUBE_COOKIES_FILE: youtube_cookies.txt
       BILIBILI_COOKIES_FILE: bilibili_cookies.txt
       WHISPER_MODEL: ${{ inputs.whisper_model }}
+      OUTPUT_ROOT: ${{ inputs.output_root }}
       WHISPER_DEVICE: cpu
       WHISPER_COMPUTE_TYPE: int8
       WHISPER_LANGUAGE: zh
@@ -105,7 +111,7 @@ jobs:
 
       - name: Prepare workspace
         run: |
-          mkdir -p single_videos state_single_video tmp_audio scripts
+          mkdir -p "${OUTPUT_ROOT:-single_videos}" state_single_video tmp_audio scripts
 
       - name: Configure git
         run: |
@@ -129,12 +135,15 @@ jobs:
           print((s[:80] or "default"))
           PY
           )
-          find "single_videos/${SAFE_DEST}" -type f | sort || true
+          echo "===== output root ====="
+          echo "${OUTPUT_ROOT:-single_videos}"
+          echo
+          find "${OUTPUT_ROOT:-single_videos}/${SAFE_DEST}" -type f | sort || true
 
       - name: Commit and push
         shell: bash
         run: |
-          git add single_videos state_single_video
+          git add "${OUTPUT_ROOT:-single_videos}" state_single_video
           git diff --cached --quiet || git commit -m "single-video: ${DESTINATION}"
           git pull --rebase origin "${GITHUB_REF_NAME}" || true
           git push origin "HEAD:${GITHUB_REF_NAME}"

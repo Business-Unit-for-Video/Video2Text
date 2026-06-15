@@ -40,6 +40,7 @@ jobs:
               "destinations/*/with_timestamps/*.txt",
               "single_videos/*/with_timestamps/*.txt",
               "youtube_channels/*/with_timestamps/*.txt",
+              "unified_outputs/*/*/with_timestamps/*.txt",
           ]
           report_json = Path("state/transcript_stats_report.json")
           report_csv = Path("state/transcript_stats_files.csv")

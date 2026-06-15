@@ -127,7 +127,8 @@ jobs:
                 --ref "${GITHUB_REF_NAME}" \
                 -f source_url="${SOURCE_URL}" \
                 -f destination="${DESTINATION}" \
-                -f whisper_model="${WHISPER_MODEL}"
+                -f whisper_model="${WHISPER_MODEL}" \
+                -f output_root="unified_outputs/${SOURCE_TYPE}"
               ;;
             single_video)
               gh workflow run ".github/workflows/transcribe_single_video.yml" \
@@ -136,7 +137,8 @@ jobs:
                 -f destination="${DESTINATION}" \
                 -f platform="${PLATFORM}" \
                 -f use_cookies="${USE_COOKIES}" \
-                -f whisper_model="${WHISPER_MODEL}"
+                -f whisper_model="${WHISPER_MODEL}" \
+                -f output_root="unified_outputs/${SOURCE_TYPE}"
               ;;
             youtube_channel)
               gh workflow run ".github/workflows/transcribe_youtube_channel.yml" \
@@ -144,6 +146,7 @@ jobs:
                 -f channel_url="${SOURCE_URL}" \
                 -f destination="${DESTINATION}" \
                 -f include_members="${INCLUDE_MEMBERS}" \
-                -f whisper_model="${WHISPER_MODEL}"
+                -f whisper_model="${WHISPER_MODEL}" \
+                -f output_root="unified_outputs/${SOURCE_TYPE}"
               ;;
           esac

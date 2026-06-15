@@ -58,9 +58,11 @@ def sanitize_key(name: str, max_len: int = 80) -> str:
 
 
 DESTINATION = sanitize_key(DESTINATION_RAW or "default")
+OUTPUT_ROOT_RAW = os.getenv("OUTPUT_ROOT", "").strip()
+OUTPUT_ROOT = Path(OUTPUT_ROOT_RAW) if OUTPUT_ROOT_RAW else Path("single_videos")
 
 STATE_DIR = Path("state_single_video") / DESTINATION
-OUTPUT_DIR = Path("single_videos") / DESTINATION
+OUTPUT_DIR = OUTPUT_ROOT / DESTINATION
 WITH_TS_DIR = OUTPUT_DIR / "with_timestamps"
 PLAIN_DIR = OUTPUT_DIR / "plain"
 TMP_DIR = Path("tmp_audio") / DESTINATION
@@ -292,7 +294,7 @@ def cleanup_temp_file(path: Optional[Path]):
 
 
 def git_commit_and_push(message: str):
-    git_run(["git", "add", "single_videos", "state_single_video"], check=False)
+    git_run(["git", "add", str(OUTPUT_ROOT), "state_single_video"], check=False)
     diff = subprocess.run(["git", "diff", "--cached", "--quiet"])
     if diff.returncode == 0:
         log("[info] no git changes to commit")

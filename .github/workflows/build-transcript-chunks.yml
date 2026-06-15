@@ -8,6 +8,7 @@ on:
       - "destinations/**/with_timestamps/*.txt"
       - "single_videos/**/with_timestamps/*.txt"
       - "youtube_channels/**/with_timestamps/*.txt"
+      - "unified_outputs/**/with_timestamps/*.txt"
       - ".github/workflows/build-transcript-chunks.yml"
 
 permissions:
@@ -46,6 +47,7 @@ jobs:
               "destinations/*/with_timestamps/*.txt",
               "single_videos/*/with_timestamps/*.txt",
               "youtube_channels/*/with_timestamps/*.txt",
+              "unified_outputs/*/*/with_timestamps/*.txt",
           ]
           OUTPUT_JSONL = Path("output/chunks.jsonl")
           OUTPUT_STATS = Path("output/chunk_build_stats.json")

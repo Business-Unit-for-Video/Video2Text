@@ -16,6 +16,11 @@ on:
         required: false
         default: false
         type: boolean
+      output_root:
+        description: "统一输出根目录；留空时使用旧目录 youtube_channels"
+        required: false
+        default: ""
+        type: string
       whisper_model:
         description: "Whisper 模型"
         required: false
@@ -41,6 +46,7 @@ jobs:
       YOUTUBE_INCLUDE_MEMBERS: ${{ inputs.include_members }}
       YOUTUBE_COOKIES_FILE: youtube_cookies.txt
       WHISPER_MODEL: ${{ inputs.whisper_model }}
+      OUTPUT_ROOT: ${{ inputs.output_root }}
       WHISPER_DEVICE: cpu
       WHISPER_COMPUTE_TYPE: int8
       WHISPER_LANGUAGE: zh
@@ -98,7 +104,7 @@ jobs:
 
       - name: Prepare workspace
         run: |
-          mkdir -p state_youtube youtube_channels tmp_audio scripts
+          mkdir -p state_youtube "${OUTPUT_ROOT:-youtube_channels}" tmp_audio scripts
 
       - name: Configure git
         run: |
@@ -138,6 +144,9 @@ jobs:
           echo
           echo "===== destination(safe) ====="
           echo "${SAFE_DEST}"
+          echo
+          echo "===== output root ====="
+          echo "${OUTPUT_ROOT:-youtube_channels}"
           echo
           echo "===== done count ====="
           if [ -f "state_youtube/${SAFE_DEST}/done.txt" ]; then
@@ -212,7 +221,7 @@ jobs:
           fi
           echo
           echo "===== output files ====="
-          find "youtube_channels/${SAFE_DEST}" -type f | sort || true
+          find "${OUTPUT_ROOT:-youtube_channels}/${SAFE_DEST}" -type f | sort || true
 
       - name: Trigger next run
         if: always()
