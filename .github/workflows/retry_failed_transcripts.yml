@@ -1,4 +1,4 @@
-name: retry-failed-transcripts
+name: 重试失败字幕
 
 on:
   workflow_dispatch:

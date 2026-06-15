@@ -1,4 +1,4 @@
-name: transcribe-single-video
+name: 转写单个视频
 
 on:
   workflow_dispatch:

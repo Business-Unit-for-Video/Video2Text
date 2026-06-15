@@ -1,4 +1,4 @@
-name: transcribe-zhangxuefeng
+name: 转写张雪峰空间
 
 on:
   workflow_dispatch:

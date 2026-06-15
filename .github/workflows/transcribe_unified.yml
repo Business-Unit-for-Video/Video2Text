@@ -1,4 +1,4 @@
-name: transcribe-unified
+name: 统一转写入口
 
 on:
   workflow_dispatch:

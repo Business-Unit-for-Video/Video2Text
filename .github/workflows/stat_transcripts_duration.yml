@@ -1,4 +1,4 @@
-name: stat-transcripts-duration
+name: 统计字幕时长
 
 on:
   workflow_dispatch:

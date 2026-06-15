@@ -1,4 +1,4 @@
-name: build-transcript-chunks
+name: 构建字幕检索切片
 
 on:
   workflow_dispatch:

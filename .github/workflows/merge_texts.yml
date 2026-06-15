@@ -1,4 +1,4 @@
-name: merge-text-files
+name: 合并文本文件
 
 on:
   workflow_dispatch:

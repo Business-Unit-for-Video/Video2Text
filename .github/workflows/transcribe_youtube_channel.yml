@@ -1,4 +1,4 @@
-name: transcribe-youtube-channel
+name: 转写 YouTube 频道
 
 on:
   workflow_dispatch:

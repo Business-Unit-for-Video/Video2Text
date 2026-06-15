@@ -1,4 +1,4 @@
-name: rename-transcripts-from-bilibili
+name: 按 B 站信息重命名字幕
 
 on:
   workflow_dispatch:

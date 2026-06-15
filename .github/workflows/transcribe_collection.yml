@@ -1,4 +1,4 @@
-name: transcribe-collection
+name: 转写 B 站合集
 
 on:
   workflow_dispatch:
