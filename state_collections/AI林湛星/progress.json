@@ -1,14 +1,10 @@
 {
   "status": "finished",
-  "note": "one video processed, no more pending",
+  "note": "all items completed",
   "destination": "AI林湛星",
-  "source_url": "https://www.bilibili.com/video/BV1L2EE6bEeh?spm_id_from=333.788.videopod.sections&vd_source=1333df6f11f8b384c9d06647ecc4b5e8",
+  "source_url": "https://www.bilibili.com/video/BV1mhjg6SEJy?spm_id_from=333.788.videopod.sections&vd_source=1333df6f11f8b384c9d06647ecc4b5e8",
   "queue_total": 1,
   "queue_index": 1,
-  "updated_at": 1782782512,
-  "updated_at_readable": "2026-06-30 01:21:52",
-  "current_item_id": "0001_BV1L2EE6bEeh",
-  "current_bvid": "BV1L2EE6bEeh",
-  "current_title": "BV1L2EE6bEeh",
-  "current_url": "https://www.bilibili.com/video/BV1L2EE6bEeh"
+  "updated_at": 1782784761,
+  "updated_at_readable": "2026-06-30 01:59:21"
 }
