@@ -1,0 +1,6 @@
+item_id: 0002_BV1PkTF6FEnF
+bvid: BV1PkTF6FEnF
+title: 【一套吃透】Harness+Loop Engineering两大智能体工程范式，全维度拆解 LLM Agent 底层架构与核心运行逻辑，从基础原理到设计思路 p02 02Harness驾驭工程的概念
+url: https://www.bilibili.com/video/BV1PkTF6FEnF?p=2
+time: 2026-07-17 14:49:44
+error: CalledProcessError(1, ['yt-dlp', '--cookies', 'cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/IT技能树/0002_BV1PkTF6FEnF.%(ext)s', 'https://www.bilibili.com/video/BV1PkTF6FEnF?p=2'])
