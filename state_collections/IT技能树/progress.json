@@ -1,14 +1,14 @@
 {
-  "status": "done_one",
-  "note": "one video processed, more pending",
+  "status": "finished",
+  "note": "one video processed, no more pending",
   "destination": "IT技能树",
   "source_url": "https://www.bilibili.com/video/BV1PkTF6FEnF/?spm_id_from=333.1391.0.0&vd_source=1333df6f11f8b384c9d06647ecc4b5e8",
   "queue_total": 35,
-  "queue_index": 34,
-  "updated_at": 1784309273,
-  "updated_at_readable": "2026-07-17 17:27:53",
-  "current_item_id": "0034_BV1PkTF6FEnF",
+  "queue_index": 35,
+  "updated_at": 1784311291,
+  "updated_at_readable": "2026-07-17 18:01:31",
+  "current_item_id": "0035_BV1PkTF6FEnF",
   "current_bvid": "BV1PkTF6FEnF",
-  "current_title": "【一套吃透】Harness+Loop Engineering两大智能体工程范式，全维度拆解 LLM Agent 底层架构与核心运行逻辑，从基础原理到设计思路 p34 34五大构建块",
-  "current_url": "https://www.bilibili.com/video/BV1PkTF6FEnF?p=34"
+  "current_title": "【一套吃透】Harness+Loop Engineering两大智能体工程范式，全维度拆解 LLM Agent 底层架构与核心运行逻辑，从基础原理到设计思路 p35 35Loop Engineering案例实操",
+  "current_url": "https://www.bilibili.com/video/BV1PkTF6FEnF?p=35"
 }
