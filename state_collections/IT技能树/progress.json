@@ -1,14 +1,14 @@
 {
   "status": "error",
-  "note": "CalledProcessError(1, ['yt-dlp', '--cookies', 'cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/IT技能树/0011_BV1PkTF6FEnF.%(ext)s', 'https://www.bilibili.com/video/BV1PkTF6FEnF?p=11'])",
+  "note": "CalledProcessError(1, ['yt-dlp', '--cookies', 'cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/IT技能树/0012_BV1PkTF6FEnF.%(ext)s', 'https://www.bilibili.com/video/BV1PkTF6FEnF?p=12'])",
   "destination": "IT技能树",
   "source_url": "https://www.bilibili.com/video/BV1PkTF6FEnF/?spm_id_from=333.1391.0.0&vd_source=1333df6f11f8b384c9d06647ecc4b5e8",
   "queue_total": 35,
-  "queue_index": 11,
-  "updated_at": 1784302832,
-  "updated_at_readable": "2026-07-17 15:40:32",
-  "current_item_id": "0011_BV1PkTF6FEnF",
+  "queue_index": 12,
+  "updated_at": 1784302933,
+  "updated_at_readable": "2026-07-17 15:42:13",
+  "current_item_id": "0012_BV1PkTF6FEnF",
   "current_bvid": "BV1PkTF6FEnF",
-  "current_title": "【一套吃透】Harness+Loop Engineering两大智能体工程范式，全维度拆解 LLM Agent 底层架构与核心运行逻辑，从基础原理到设计思路 p11 11Harness架构中自我进化的Skills(二)",
-  "current_url": "https://www.bilibili.com/video/BV1PkTF6FEnF?p=11"
+  "current_title": "【一套吃透】Harness+Loop Engineering两大智能体工程范式，全维度拆解 LLM Agent 底层架构与核心运行逻辑，从基础原理到设计思路 p12 12Harness架构的Context-Engineering(一)",
+  "current_url": "https://www.bilibili.com/video/BV1PkTF6FEnF?p=12"
 }
