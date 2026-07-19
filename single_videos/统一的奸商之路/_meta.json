@@ -1,15 +1,18 @@
 {
   "id": "BV12M411s7S6",
   "title": "创业究竟有多难？8年奸商，3万字泣血分享《普通人创业保姆级教程》",
-  "url": "https://www.bilibili.com/video/BV12M411s7S6/?spm_id_from=333.337.search-card.all.click&vd_source=1333df6f11f8b384c9d06647ecc4b5e8",
+  "url": "https://www.bilibili.com/video/BV12M411s7S6/",
   "uploader": "统一的奸商之路",
   "channel": "",
   "duration": 4646.612,
   "platform": "bilibili",
   "destination": "统一的奸商之路",
-  "generated_at": "2026-07-19 04:15:24",
+  "generated_at": "2026-07-19 08:42:25",
   "whisper_model": "medium",
   "language": "zh",
   "language_probability": 1,
-  "segments": 1365
+  "segments": 2653,
+  "audio_duration": 4646.592,
+  "transcript_end": 4646.48,
+  "coverage_ratio": 0.9999758963128246
 }
