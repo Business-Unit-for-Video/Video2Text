@@ -2,6 +2,7 @@ import json
 import os
 import re
 import subprocess
+import tempfile
 import time
 from pathlib import Path
 from typing import Dict, Optional
@@ -28,6 +29,9 @@ AUDIO_FORMAT = os.getenv("AUDIO_FORMAT", "mp3")
 AUDIO_QUALITY = os.getenv("AUDIO_QUALITY", "7")
 BEAM_SIZE = int(os.getenv("BEAM_SIZE", "1"))
 VAD_FILTER = os.getenv("VAD_FILTER", "1") in {"1", "true", "True"}
+TRANSCRIBE_CHUNK_SECONDS = int(os.getenv("TRANSCRIBE_CHUNK_SECONDS", "1800"))
+MAX_TRAILING_GAP_SECONDS = float(os.getenv("MAX_TRAILING_GAP_SECONDS", "120"))
+MAX_TRAILING_GAP_RATIO = float(os.getenv("MAX_TRAILING_GAP_RATIO", "0.10"))
 
 GIT_BRANCH = os.getenv("GITHUB_REF_NAME", "").strip()
 
@@ -223,12 +227,42 @@ def download_audio(info: Dict) -> Path:
     return files[0]
 
 
+def probe_audio_duration(audio_path: Path) -> float:
+    res = run([
+        "ffprobe", "-v", "error",
+        "-show_entries", "format=duration",
+        "-of", "default=noprint_wrappers=1:nokey=1",
+        str(audio_path),
+    ], capture=True)
+    try:
+        duration = float(res.stdout.strip())
+    except (TypeError, ValueError) as exc:
+        raise RuntimeError(f"unable to read audio duration from ffprobe: {res.stdout!r}") from exc
+    if duration <= 0:
+        raise RuntimeError(f"invalid audio duration: {duration}")
+    return duration
+
+
+def validate_download_duration(info: Dict, audio_duration: float):
+    expected = info.get("duration")
+    if not expected:
+        return
+    expected = float(expected)
+    allowed_shortfall = max(10.0, expected * 0.02)
+    if audio_duration < expected - allowed_shortfall:
+        raise RuntimeError(
+            "downloaded audio is incomplete: "
+            f"audio={audio_duration:.3f}s, source={expected:.3f}s, "
+            f"shortfall={expected - audio_duration:.3f}s"
+        )
+
+
 def load_model() -> WhisperModel:
     log(f"[info] loading model: {MODEL_NAME}, device={DEVICE}, compute_type={COMPUTE_TYPE}")
     return WhisperModel(MODEL_NAME, device=DEVICE, compute_type=COMPUTE_TYPE)
 
 
-def transcribe_audio(model: WhisperModel, audio_path: Path) -> Dict:
+def transcribe_audio(model: WhisperModel, audio_path: Path, audio_duration: float) -> Dict:
     kwargs = {
         "language": LANGUAGE if LANGUAGE else None,
         "beam_size": BEAM_SIZE,
@@ -238,27 +272,79 @@ def transcribe_audio(model: WhisperModel, audio_path: Path) -> Dict:
     if INITIAL_PROMPT:
         kwargs["initial_prompt"] = INITIAL_PROMPT
 
-    segments, info = model.transcribe(str(audio_path), **kwargs)
-
     ts_lines = []
     plain_lines = []
     kept_segments = 0
+    transcript_end = 0.0
+    detected_info = None
 
-    for seg in segments:
-        text = (seg.text or "").strip()
-        if not text:
-            continue
-        kept_segments += 1
-        ts_lines.append(f"[{seconds_to_mmss_mmm(seg.start)} --> {seconds_to_mmss_mmm(seg.end)}] {text}")
-        plain_lines.append(text)
+    # Split long inputs deliberately so a prematurely exhausted lazy iterator
+    # cannot silently turn a partial transcript into a successful output.
+    chunk_seconds = max(60, TRANSCRIBE_CHUNK_SECONDS)
+    with tempfile.TemporaryDirectory(prefix="transcribe_chunks_", dir=TMP_DIR) as chunk_dir:
+        chunk_start = 0.0
+        chunk_index = 0
+        while chunk_start < audio_duration:
+            chunk_duration = min(float(chunk_seconds), audio_duration - chunk_start)
+            chunk_path = Path(chunk_dir) / f"chunk_{chunk_index:04d}.wav"
+            log(
+                f"[info] transcribing chunk {chunk_index + 1}: "
+                f"{chunk_start:.3f}s..{chunk_start + chunk_duration:.3f}s"
+            )
+            run([
+                "ffmpeg", "-hide_banner", "-loglevel", "error", "-y",
+                "-ss", f"{chunk_start:.3f}", "-t", f"{chunk_duration:.3f}",
+                "-i", str(audio_path), "-vn", "-ac", "1", "-ar", "16000",
+                "-c:a", "pcm_s16le", str(chunk_path),
+            ])
+            segments, current_info = model.transcribe(str(chunk_path), **kwargs)
+            if detected_info is None:
+                detected_info = current_info
+            for seg in segments:
+                text = (seg.text or "").strip()
+                if not text:
+                    continue
+                start = chunk_start + float(seg.start)
+                end = min(audio_duration, chunk_start + float(seg.end))
+                kept_segments += 1
+                transcript_end = max(transcript_end, end)
+                ts_lines.append(
+                    f"[{seconds_to_mmss_mmm(start)} --> {seconds_to_mmss_mmm(end)}] {text}"
+                )
+                plain_lines.append(text)
+            chunk_path.unlink(missing_ok=True)
+            chunk_start += chunk_duration
+            chunk_index += 1
 
     return {
-        "language": getattr(info, "language", ""),
-        "language_probability": getattr(info, "language_probability", ""),
+        "language": getattr(detected_info, "language", ""),
+        "language_probability": getattr(detected_info, "language_probability", ""),
         "segments": kept_segments,
+        "audio_duration": audio_duration,
+        "transcript_end": transcript_end,
+        "coverage_ratio": transcript_end / audio_duration,
         "timestamp_text": "\n".join(ts_lines).strip(),
         "plain_text": "\n".join(plain_lines).strip(),
     }
+
+
+def validate_transcription(result: Dict):
+    audio_duration = float(result.get("audio_duration") or 0)
+    transcript_end = float(result.get("transcript_end") or 0)
+    if not result.get("segments") or not result.get("plain_text"):
+        raise RuntimeError("transcription produced no text")
+    trailing_gap = max(0.0, audio_duration - transcript_end)
+    allowed_gap = max(MAX_TRAILING_GAP_SECONDS, audio_duration * MAX_TRAILING_GAP_RATIO)
+    if trailing_gap > allowed_gap:
+        raise RuntimeError(
+            "transcription is incomplete: "
+            f"audio={audio_duration:.3f}s, transcript_end={transcript_end:.3f}s, "
+            f"trailing_gap={trailing_gap:.3f}s, allowed={allowed_gap:.3f}s"
+        )
+    log(
+        f"[ok] transcription coverage: {transcript_end:.3f}/{audio_duration:.3f}s "
+        f"({result['coverage_ratio']:.2%}), trailing gap {trailing_gap:.3f}s"
+    )
 
 
 def write_outputs(info: Dict, result: Dict):
@@ -281,6 +367,9 @@ def write_outputs(info: Dict, result: Dict):
         "language": result.get("language", ""),
         "language_probability": result.get("language_probability", ""),
         "segments": result.get("segments", 0),
+        "audio_duration": result.get("audio_duration"),
+        "transcript_end": result.get("transcript_end"),
+        "coverage_ratio": result.get("coverage_ratio"),
     }
     save_json(meta_output_path(), meta)
 
@@ -327,9 +416,13 @@ def main():
 
     try:
         audio_path = download_audio(info)
+        audio_duration = probe_audio_duration(audio_path)
+        validate_download_duration(info, audio_duration)
+        log(f"[ok] downloaded audio duration: {audio_duration:.3f}s")
 
         save_progress("transcribing", extra=info)
-        result = transcribe_audio(model, audio_path)
+        result = transcribe_audio(model, audio_path, audio_duration)
+        validate_transcription(result)
 
         save_progress("writing_outputs", extra=info)
         write_outputs(info, result)
