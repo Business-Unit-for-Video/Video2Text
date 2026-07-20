@@ -1,15 +1,15 @@
 {
-  "status": "done_one",
-  "note": "one video processed, more pending",
+  "status": "error",
+  "note": "RuntimeError('transcription is incomplete: audio=240.048s, transcript_end=89.330s, trailing_gap=150.718s, allowed=120.000s')",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
   "queue_total": 1028,
-  "queue_index": 13,
-  "updated_at": 1784537758,
-  "updated_at_readable": "2026-07-20 08:55:58",
-  "current_video_id": "-kJmv2YVx3I",
-  "current_title": "Dubai, Dubai, how could it not fall? Can you really do without believing in metaphysics? | Thanks...",
-  "current_url": "https://www.youtube.com/watch?v=-kJmv2YVx3I",
+  "queue_index": 14,
+  "updated_at": 1784537865,
+  "updated_at_readable": "2026-07-20 08:57:45",
+  "current_video_id": "Lb3vz6ynzbA",
+  "current_title": "Pang Donglai and Da Lao Wang sang a song to thank Man Daren from the Second Creation Channel.",
+  "current_url": "https://www.youtube.com/watch?v=Lb3vz6ynzbA",
   "current_tab": "videos"
 }
