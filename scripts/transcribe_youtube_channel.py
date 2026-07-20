@@ -12,6 +12,7 @@ from transcription_integrity import (
     atomic_write_text_pair,
     probe_audio_duration,
     transcribe_audio_chunked,
+    transcribe_audio_whole,
     validate_download_duration,
     validate_transcription,
 )
@@ -19,7 +20,7 @@ from transcription_integrity import (
 CHANNEL_URL = os.getenv("YOUTUBE_CHANNEL_URL", "").strip()
 COOKIES_FILE = Path(os.getenv("YOUTUBE_COOKIES_FILE", "youtube_cookies.txt"))
 
-MODEL_NAME = os.getenv("WHISPER_MODEL", "small")
+MODEL_NAME = os.getenv("WHISPER_MODEL", "medium")
 DEVICE = os.getenv("WHISPER_DEVICE", "cpu")
 COMPUTE_TYPE = os.getenv("WHISPER_COMPUTE_TYPE", "int8")
 LANGUAGE = os.getenv("WHISPER_LANGUAGE", "zh")
@@ -30,6 +31,7 @@ AUDIO_QUALITY = os.getenv("AUDIO_QUALITY", "7")
 BEAM_SIZE = int(os.getenv("BEAM_SIZE", "1"))
 VAD_FILTER = os.getenv("VAD_FILTER", "1") in {"1", "true", "True"}
 TRANSCRIBE_CHUNK_SECONDS = int(os.getenv("TRANSCRIBE_CHUNK_SECONDS", "1800"))
+TRANSCRIBE_CHUNKED = os.getenv("TRANSCRIBE_CHUNKED", "0").strip().lower() in {"1", "true", "yes", "on"}
 MAX_TRAILING_GAP_SECONDS = float(os.getenv("MAX_TRAILING_GAP_SECONDS", "120"))
 MAX_TRAILING_GAP_RATIO = float(os.getenv("MAX_TRAILING_GAP_RATIO", "0.10"))
 
@@ -376,10 +378,9 @@ def transcribe_audio(model: WhisperModel, audio_path: Path, audio_duration: floa
     if INITIAL_PROMPT:
         kwargs["initial_prompt"] = INITIAL_PROMPT
 
-    return transcribe_audio_chunked(
-        model, audio_path, audio_duration, TMP_DIR, run, kwargs,
-        seconds_to_mmss_mmm, TRANSCRIBE_CHUNK_SECONDS,
-    )
+    if TRANSCRIBE_CHUNKED:
+        return transcribe_audio_chunked(model, audio_path, audio_duration, TMP_DIR, run, kwargs, seconds_to_mmss_mmm, TRANSCRIBE_CHUNK_SECONDS)
+    return transcribe_audio_whole(model, audio_path, audio_duration, kwargs, seconds_to_mmss_mmm)
 
 
 def write_outputs(item: Dict, result: Dict):

@@ -11,6 +11,7 @@ from faster_whisper import WhisperModel
 from transcription_integrity import (
     probe_audio_duration,
     transcribe_audio_chunked,
+    transcribe_audio_whole,
     validate_download_duration,
     validate_transcription,
 )
@@ -29,7 +30,7 @@ FAILED_FILE = STATE_DIR / "failed.txt"
 PROGRESS_FILE = STATE_DIR / "progress.json"
 CONTINUE_FLAG = STATE_DIR / "continue.flag"
 
-MODEL_NAME = os.getenv("WHISPER_MODEL", "small")
+MODEL_NAME = os.getenv("WHISPER_MODEL", "medium")
 DEVICE = os.getenv("WHISPER_DEVICE", "cpu")
 COMPUTE_TYPE = os.getenv("WHISPER_COMPUTE_TYPE", "int8")
 LANGUAGE = os.getenv("WHISPER_LANGUAGE", "zh")
@@ -38,6 +39,7 @@ AUDIO_QUALITY = os.getenv("AUDIO_QUALITY", "7")
 BEAM_SIZE = int(os.getenv("BEAM_SIZE", "1"))
 VAD_FILTER = os.getenv("VAD_FILTER", "1") == "1"
 TRANSCRIBE_CHUNK_SECONDS = int(os.getenv("TRANSCRIBE_CHUNK_SECONDS", "1800"))
+TRANSCRIBE_CHUNKED = os.getenv("TRANSCRIBE_CHUNKED", "0").strip().lower() in {"1", "true", "yes", "on"}
 MAX_TRAILING_GAP_SECONDS = float(os.getenv("MAX_TRAILING_GAP_SECONDS", "120"))
 MAX_TRAILING_GAP_RATIO = float(os.getenv("MAX_TRAILING_GAP_RATIO", "0.10"))
 GIT_BRANCH = os.getenv("GITHUB_REF_NAME", "").strip()
@@ -271,17 +273,17 @@ def load_model() -> WhisperModel:
 
 
 def transcribe_audio(model: WhisperModel, audio_path: Path, audio_duration: float) -> Dict:
-    result = transcribe_audio_chunked(
-        model, audio_path, audio_duration, TMP_DIR, run,
-        {
-            "language": LANGUAGE if LANGUAGE else None,
-            "beam_size": BEAM_SIZE,
-            "vad_filter": VAD_FILTER,
-            "condition_on_previous_text": False,
-        },
-        seconds_to_hms,
-        TRANSCRIBE_CHUNK_SECONDS,
-    )
+    kwargs = {
+        "language": LANGUAGE if LANGUAGE else None, "beam_size": BEAM_SIZE,
+        "vad_filter": VAD_FILTER, "condition_on_previous_text": False,
+    }
+    if TRANSCRIBE_CHUNKED:
+        result = transcribe_audio_chunked(
+            model, audio_path, audio_duration, TMP_DIR, run, kwargs,
+            seconds_to_hms, TRANSCRIBE_CHUNK_SECONDS,
+        )
+    else:
+        result = transcribe_audio_whole(model, audio_path, audio_duration, kwargs, seconds_to_hms)
     # Preserve the legacy single text field and timestamp delimiter.
     result["text"] = result.pop("timestamp_text").replace(" --> ", " - ")
     result["plain_text"] = result["text"]

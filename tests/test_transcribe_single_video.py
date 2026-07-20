@@ -6,6 +6,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
+sys.path.insert(0, str(Path(__file__).parents[1] / "scripts"))
 
 fake_faster_whisper = types.ModuleType("faster_whisper")
 fake_faster_whisper.WhisperModel = object
@@ -61,16 +62,12 @@ class TranscriptionValidationTests(unittest.TestCase):
             module.validate_download_duration({"duration": 4646.612}, 2401.660)
 
     @patch.object(module, "run")
-    def test_long_audio_is_transcribed_in_separate_chunks(self, run_mock):
+    def test_long_audio_defaults_to_one_whole_audio_call(self, run_mock):
         run_mock.return_value = types.SimpleNamespace(stdout="")
         model = FakeModel()
-        with tempfile.TemporaryDirectory() as temp_dir:
-            with patch.object(module, "TMP_DIR", Path(temp_dir)):
-                result = module.transcribe_audio(model, Path("audio.mp3"), 4646.612)
-        self.assertEqual(model.calls, 3)
-        self.assertEqual(result["segments"], 3)
-        self.assertGreater(result["transcript_end"], 4600)
-        self.assertIn("[60:00.000 --> 77:25.000] part 3", result["timestamp_text"])
+        result = module.transcribe_audio(model, Path("audio.mp3"), 2 * 3600 + 1)
+        self.assertEqual(model.calls, 1)
+        self.assertEqual(result["segments"], 1)
 
 
 if __name__ == "__main__":

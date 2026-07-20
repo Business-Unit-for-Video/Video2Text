@@ -46,18 +46,14 @@ def fake_ffmpeg_run(cmd, **_kwargs):
 
 
 class LegacyIntegrityTests(unittest.TestCase):
-    def test_all_legacy_entrypoints_chunk_and_offset(self):
+    def test_all_legacy_entrypoints_default_to_one_whole_call(self):
         for name in ("transcribe_bili", "transcribe_bili_collection", "transcribe_youtube_channel"):
             module = load_script(name)
             with self.subTest(name=name), tempfile.TemporaryDirectory() as temp_dir:
-                with patch.object(module, "run", side_effect=fake_ffmpeg_run):
-                    with patch.object(module, "TMP_DIR", Path(temp_dir)):
-                        result = module.transcribe_audio(FakeModel(), Path("audio.mp3"), 4646.612)
-                self.assertEqual(result["segments"], 3)
-                self.assertGreater(result["transcript_end"], 4600)
-                timestamp_text = result.get("timestamp_text") or result["text"]
-                expected = "01:00:00" if name == "transcribe_bili" else "60:00.000"
-                self.assertIn(expected, timestamp_text)
+                model = FakeModel()
+                result = module.transcribe_audio(model, Path("audio.mp3"), 2 * 3600 + 1)
+                self.assertEqual(model.calls, 1)
+                self.assertEqual(result["segments"], 1)
 
     def test_rejects_partial_result_before_writing(self):
         module = load_script("transcribe_bili_collection")
@@ -85,17 +81,14 @@ class LegacyIntegrityTests(unittest.TestCase):
                 info = types.SimpleNamespace(language="zh", language_probability=1)
                 return iter([Segment(0, math.inf, "bad")]), info
 
-        with tempfile.TemporaryDirectory() as temp_dir:
-            with patch.object(module, "TMP_DIR", Path(temp_dir) / "missing"):
-                with patch.object(module, "run", side_effect=fake_ffmpeg_run):
-                    with self.assertRaisesRegex(RuntimeError, "non-finite segment timestamp"):
-                        module.transcribe_audio(BadModel(), Path("audio.mp3"), 100)
+        with self.assertRaisesRegex(RuntimeError, "non-finite segment timestamp"):
+            module.transcribe_audio(BadModel(), Path("audio.mp3"), 100)
 
-    def test_requires_ffmpeg_output_and_creates_temp_root(self):
+    def test_chunk_fallback_is_explicit_opt_in(self):
         module = load_script("transcribe_youtube_channel")
         with tempfile.TemporaryDirectory() as temp_dir:
             missing = Path(temp_dir) / "nested" / "tmp"
-            with patch.object(module, "TMP_DIR", missing), patch.object(module, "run"):
+            with patch.object(module, "TRANSCRIBE_CHUNKED", True), patch.object(module, "TMP_DIR", missing), patch.object(module, "run"):
                 with self.assertRaisesRegex(RuntimeError, "did not create a usable audio chunk"):
                     module.transcribe_audio(FakeModel(), Path("audio.mp3"), 60)
             self.assertTrue(missing.is_dir())
@@ -111,7 +104,7 @@ class LegacyIntegrityTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp_dir:
             with patch.object(module, "TMP_DIR", Path(temp_dir)):
                 with patch.object(module, "run", side_effect=fake_ffmpeg_run):
-                    with self.assertRaisesRegex(RuntimeError, "outside its audio chunk"):
+                    with self.assertRaisesRegex(RuntimeError, "outside the audio"):
                         module.transcribe_audio(OverflowModel(), Path("audio.mp3"), 100)
 
     def test_two_hour_timestamp_does_not_wrap(self):

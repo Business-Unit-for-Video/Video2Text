@@ -2,13 +2,13 @@ import json
 import os
 import re
 import subprocess
-import tempfile
 import time
 from pathlib import Path
 from typing import Dict, Optional
 from urllib.parse import urlsplit
 
 from faster_whisper import WhisperModel
+from transcription_integrity import transcribe_audio_whole
 
 
 SOURCE_URL = os.getenv("SOURCE_URL", "").strip()
@@ -19,7 +19,7 @@ USE_COOKIES = str(os.getenv("USE_COOKIES", "true")).strip().lower() in {"1", "tr
 YOUTUBE_COOKIES_FILE = Path(os.getenv("YOUTUBE_COOKIES_FILE", "youtube_cookies.txt"))
 BILIBILI_COOKIES_FILE = Path(os.getenv("BILIBILI_COOKIES_FILE", "bilibili_cookies.txt"))
 
-MODEL_NAME = os.getenv("WHISPER_MODEL", "small")
+MODEL_NAME = os.getenv("WHISPER_MODEL", "medium")
 DEVICE = os.getenv("WHISPER_DEVICE", "cpu")
 COMPUTE_TYPE = os.getenv("WHISPER_COMPUTE_TYPE", "int8")
 LANGUAGE = os.getenv("WHISPER_LANGUAGE", "zh")
@@ -30,6 +30,7 @@ AUDIO_QUALITY = os.getenv("AUDIO_QUALITY", "7")
 BEAM_SIZE = int(os.getenv("BEAM_SIZE", "1"))
 VAD_FILTER = os.getenv("VAD_FILTER", "1") in {"1", "true", "True"}
 TRANSCRIBE_CHUNK_SECONDS = int(os.getenv("TRANSCRIBE_CHUNK_SECONDS", "1800"))
+
 MAX_TRAILING_GAP_SECONDS = float(os.getenv("MAX_TRAILING_GAP_SECONDS", "120"))
 MAX_TRAILING_GAP_RATIO = float(os.getenv("MAX_TRAILING_GAP_RATIO", "0.10"))
 
@@ -271,61 +272,7 @@ def transcribe_audio(model: WhisperModel, audio_path: Path, audio_duration: floa
     }
     if INITIAL_PROMPT:
         kwargs["initial_prompt"] = INITIAL_PROMPT
-
-    ts_lines = []
-    plain_lines = []
-    kept_segments = 0
-    transcript_end = 0.0
-    detected_info = None
-
-    # Split long inputs deliberately so a prematurely exhausted lazy iterator
-    # cannot silently turn a partial transcript into a successful output.
-    chunk_seconds = max(60, TRANSCRIBE_CHUNK_SECONDS)
-    with tempfile.TemporaryDirectory(prefix="transcribe_chunks_", dir=TMP_DIR) as chunk_dir:
-        chunk_start = 0.0
-        chunk_index = 0
-        while chunk_start < audio_duration:
-            chunk_duration = min(float(chunk_seconds), audio_duration - chunk_start)
-            chunk_path = Path(chunk_dir) / f"chunk_{chunk_index:04d}.wav"
-            log(
-                f"[info] transcribing chunk {chunk_index + 1}: "
-                f"{chunk_start:.3f}s..{chunk_start + chunk_duration:.3f}s"
-            )
-            run([
-                "ffmpeg", "-hide_banner", "-loglevel", "error", "-y",
-                "-ss", f"{chunk_start:.3f}", "-t", f"{chunk_duration:.3f}",
-                "-i", str(audio_path), "-vn", "-ac", "1", "-ar", "16000",
-                "-c:a", "pcm_s16le", str(chunk_path),
-            ])
-            segments, current_info = model.transcribe(str(chunk_path), **kwargs)
-            if detected_info is None:
-                detected_info = current_info
-            for seg in segments:
-                text = (seg.text or "").strip()
-                if not text:
-                    continue
-                start = chunk_start + float(seg.start)
-                end = min(audio_duration, chunk_start + float(seg.end))
-                kept_segments += 1
-                transcript_end = max(transcript_end, end)
-                ts_lines.append(
-                    f"[{seconds_to_mmss_mmm(start)} --> {seconds_to_mmss_mmm(end)}] {text}"
-                )
-                plain_lines.append(text)
-            chunk_path.unlink(missing_ok=True)
-            chunk_start += chunk_duration
-            chunk_index += 1
-
-    return {
-        "language": getattr(detected_info, "language", ""),
-        "language_probability": getattr(detected_info, "language_probability", ""),
-        "segments": kept_segments,
-        "audio_duration": audio_duration,
-        "transcript_end": transcript_end,
-        "coverage_ratio": transcript_end / audio_duration,
-        "timestamp_text": "\n".join(ts_lines).strip(),
-        "plain_text": "\n".join(plain_lines).strip(),
-    }
+    return transcribe_audio_whole(model, audio_path, audio_duration, kwargs, seconds_to_mmss_mmm)
 
 
 def validate_transcription(result: Dict):

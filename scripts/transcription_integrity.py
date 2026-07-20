@@ -128,6 +128,49 @@ def transcribe_audio_chunked(
     }
 
 
+def transcribe_audio_whole(model, audio_path: Path, audio_duration: float,
+                           transcribe_kwargs: Dict,
+                           timestamp_formatter: Callable[[float], str]) -> Dict:
+    """Transcribe the complete audio in one call and retain its global timestamps."""
+    if not math.isfinite(audio_duration) or audio_duration <= 0:
+        raise RuntimeError(f"invalid audio duration: {audio_duration}")
+
+    segments, detected_info = model.transcribe(str(audio_path), **transcribe_kwargs)
+    ts_lines = []
+    plain_lines = []
+    kept_segments = 0
+    transcript_end = 0.0
+    for segment in segments:
+        text = (segment.text or "").strip()
+        if not text:
+            continue
+        start = float(segment.start)
+        end = float(segment.end)
+        if not math.isfinite(start) or not math.isfinite(end):
+            raise RuntimeError("transcription produced a non-finite segment timestamp")
+        if end < start:
+            raise RuntimeError("transcription produced a segment ending before it starts")
+        if start > audio_duration + 5.0 or end > audio_duration + 5.0:
+            raise RuntimeError("transcription produced a timestamp outside the audio")
+        start = min(audio_duration, max(0.0, start))
+        end = min(audio_duration, max(0.0, end))
+        kept_segments += 1
+        transcript_end = max(transcript_end, end)
+        ts_lines.append(f"[{timestamp_formatter(start)} --> {timestamp_formatter(end)}] {text}")
+        plain_lines.append(text)
+
+    return {
+        "language": getattr(detected_info, "language", ""),
+        "language_probability": getattr(detected_info, "language_probability", ""),
+        "segments": kept_segments,
+        "audio_duration": audio_duration,
+        "transcript_end": transcript_end,
+        "coverage_ratio": transcript_end / audio_duration,
+        "timestamp_text": "\n".join(ts_lines).strip(),
+        "plain_text": "\n".join(plain_lines).strip(),
+    }
+
+
 def validate_transcription(
     result: Dict,
     max_trailing_gap_seconds: float = 120.0,
