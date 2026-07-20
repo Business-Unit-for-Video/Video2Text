@@ -19,7 +19,7 @@ concurrency:
 jobs:
   retry:
     runs-on: ubuntu-latest
-    timeout-minutes: 355
+
 
     env:
       BILIBILI_SPACE_URL: https://space.bilibili.com/28152637/video

@@ -59,7 +59,7 @@ concurrency:
 jobs:
   dispatch:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+
 
     env:
       SOURCE_TYPE: ${{ inputs.source_type }}

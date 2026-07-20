@@ -38,7 +38,7 @@ concurrency:
 jobs:
   transcribe-one:
     runs-on: ubuntu-latest
-    timeout-minutes: 355
+
 
     env:
       YOUTUBE_CHANNEL_URL: ${{ inputs.channel_url }}

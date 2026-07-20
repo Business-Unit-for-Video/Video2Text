@@ -33,7 +33,7 @@ concurrency:
 jobs:
   transcribe-one:
     runs-on: ubuntu-latest
-    timeout-minutes: 355
+
 
     env:
       BILIBILI_SOURCE_URL: ${{ inputs.source_url }}
