@@ -1,15 +1,15 @@
 {
-  "status": "done_one",
-  "note": "one video processed, more pending",
+  "status": "error",
+  "note": "RuntimeError('transcription is incomplete: audio=160.752s, transcript_end=20.000s, trailing_gap=140.752s, allowed=120.000s')",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
   "queue_total": 1028,
-  "queue_index": 5,
-  "updated_at": 1784536386,
-  "updated_at_readable": "2026-07-20 08:33:06",
-  "current_video_id": "V2hobMGuqO0",
-  "current_title": "I Taught Everyone to Gather, Ask Around and See If They Come!",
-  "current_url": "https://www.youtube.com/watch?v=V2hobMGuqO0",
+  "queue_index": 6,
+  "updated_at": 1784536507,
+  "updated_at_readable": "2026-07-20 08:35:07",
+  "current_video_id": "BP0hDBUr90o",
+  "current_title": "Pink Team! New Balancers! 7月12日上午11:00 Garry Point鱼网针纪念碑下快闪不见不散！",
+  "current_url": "https://www.youtube.com/watch?v=BP0hDBUr90o",
   "current_tab": "videos"
 }
