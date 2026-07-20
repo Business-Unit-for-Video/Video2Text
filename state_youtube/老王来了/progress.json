@@ -1,15 +1,15 @@
 {
-  "status": "error",
-  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/7wHYzhwLJcE.%(ext)s', 'https://www.youtube.com/watch?v=7wHYzhwLJcE'])",
+  "status": "done_one",
+  "note": "one video processed, more pending",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
   "queue_total": 1028,
-  "queue_index": 66,
-  "updated_at": 1784577680,
-  "updated_at_readable": "2026-07-20 20:01:20",
-  "current_video_id": "7wHYzhwLJcE",
-  "current_title": "黄金还会继续上涨吗？黄金上涨的终极密码！",
-  "current_url": "https://www.youtube.com/watch?v=7wHYzhwLJcE",
+  "queue_index": 67,
+  "updated_at": 1784578819,
+  "updated_at_readable": "2026-07-20 20:20:19",
+  "current_video_id": "wf1ESRdAhZU",
+  "current_title": "缅甸大地震震塌1000公里外曼谷豆腐渣｜强烈谴责新西兰碧池突破道德底线的恋爱观",
+  "current_url": "https://www.youtube.com/watch?v=wf1ESRdAhZU",
   "current_tab": "videos"
 }
