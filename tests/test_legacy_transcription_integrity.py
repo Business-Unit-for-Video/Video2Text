@@ -126,6 +126,15 @@ class LegacyIntegrityTests(unittest.TestCase):
         }])
         self.assertEqual(queue[0]["duration"], "7200.5")
 
+    def test_force_retranscribe_ignores_existing_outputs(self):
+        module = load_script("transcribe_youtube_channel")
+        item = {"id": "video-1", "title": "title"}
+        with patch.object(module, "is_item_completed", return_value=True):
+            with patch.object(module, "FORCE_RETRANSCRIBE", False):
+                self.assertIsNone(module.find_next_item([item], set(), set()))
+            with patch.object(module, "FORCE_RETRANSCRIBE", True):
+                self.assertEqual(module.find_next_item([item], set(), set()), item)
+
     def test_pair_write_does_not_touch_old_files_when_staging_fails(self):
         with tempfile.TemporaryDirectory() as temp_dir:
             first = Path(temp_dir) / "ts" / "item.txt"

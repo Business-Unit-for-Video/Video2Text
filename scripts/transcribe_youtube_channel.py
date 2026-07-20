@@ -36,6 +36,7 @@ MAX_TRAILING_GAP_SECONDS = float(os.getenv("MAX_TRAILING_GAP_SECONDS", "120"))
 MAX_TRAILING_GAP_RATIO = float(os.getenv("MAX_TRAILING_GAP_RATIO", "0.10"))
 
 INCLUDE_MEMBERS = str(os.getenv("YOUTUBE_INCLUDE_MEMBERS", "false")).strip().lower() in {"1", "true", "yes", "on"}
+FORCE_RETRANSCRIBE = str(os.getenv("FORCE_RETRANSCRIBE", "false")).strip().lower() in {"1", "true", "yes", "on"}
 GIT_BRANCH = os.getenv("GITHUB_REF_NAME", "").strip()
 
 
@@ -321,7 +322,7 @@ def is_item_completed(item: Dict) -> bool:
 def find_next_item(queue: List[Dict], done: set, failed: set) -> Optional[Dict]:
     for item in queue:
         vid = item["id"]
-        if vid in done or vid in failed or is_item_completed(item):
+        if vid in done or vid in failed or (not FORCE_RETRANSCRIBE and is_item_completed(item)):
             continue
         return item
     return None

@@ -24,8 +24,13 @@ on:
       whisper_model:
         description: "Whisper 模型"
         required: false
-        default: "small"
+        default: "medium"
         type: string
+      force_retranscribe:
+        description: "忽略既有完成状态和输出，重新转写全部视频"
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: write
@@ -46,6 +51,7 @@ jobs:
       YOUTUBE_INCLUDE_MEMBERS: ${{ inputs.include_members }}
       YOUTUBE_COOKIES_FILE: youtube_cookies.txt
       WHISPER_MODEL: ${{ inputs.whisper_model }}
+      FORCE_RETRANSCRIBE: ${{ inputs.force_retranscribe }}
       OUTPUT_ROOT: ${{ inputs.output_root }}
       WHISPER_DEVICE: cpu
       WHISPER_COMPUTE_TYPE: int8
@@ -239,7 +245,8 @@ jobs:
               -f channel_url="${YOUTUBE_CHANNEL_URL}" \
               -f destination="${DESTINATION}" \
               -f include_members="${YOUTUBE_INCLUDE_MEMBERS}" \
-              -f whisper_model="${WHISPER_MODEL}"
+              -f whisper_model="${WHISPER_MODEL}" \
+              -f force_retranscribe="${FORCE_RETRANSCRIBE}"
           else
             echo "continue.flag not found, stop here"
           fi
