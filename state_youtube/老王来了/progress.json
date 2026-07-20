@@ -1,15 +1,15 @@
 {
   "status": "error",
-  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/3VTLE0TTuIc.%(ext)s', 'https://www.youtube.com/watch?v=3VTLE0TTuIc'])",
+  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/7wHYzhwLJcE.%(ext)s', 'https://www.youtube.com/watch?v=7wHYzhwLJcE'])",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
   "queue_total": 1028,
-  "queue_index": 65,
-  "updated_at": 1784577586,
-  "updated_at_readable": "2026-07-20 19:59:46",
-  "current_video_id": "3VTLE0TTuIc",
-  "current_title": "易经初步：六十四卦",
-  "current_url": "https://www.youtube.com/watch?v=3VTLE0TTuIc",
+  "queue_index": 66,
+  "updated_at": 1784577680,
+  "updated_at_readable": "2026-07-20 20:01:20",
+  "current_video_id": "7wHYzhwLJcE",
+  "current_title": "黄金还会继续上涨吗？黄金上涨的终极密码！",
+  "current_url": "https://www.youtube.com/watch?v=7wHYzhwLJcE",
   "current_tab": "videos"
 }
