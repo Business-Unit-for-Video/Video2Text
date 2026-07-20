@@ -1,15 +1,15 @@
 {
-  "status": "done_one",
-  "note": "one video processed, more pending",
+  "status": "error",
+  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/2CN4MsPc6kQ.%(ext)s', 'https://www.youtube.com/watch?v=2CN4MsPc6kQ'])",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
   "queue_total": 1028,
-  "queue_index": 63,
-  "updated_at": 1784577395,
-  "updated_at_readable": "2026-07-20 19:56:35",
-  "current_video_id": "4nUYRHIsw1s",
-  "current_title": "April 28, 2025",
-  "current_url": "https://www.youtube.com/watch?v=4nUYRHIsw1s",
+  "queue_index": 64,
+  "updated_at": 1784577487,
+  "updated_at_readable": "2026-07-20 19:58:07",
+  "current_video_id": "2CN4MsPc6kQ",
+  "current_title": "中植系解密系列之一：伊春奠基，借资本运作腾飞",
+  "current_url": "https://www.youtube.com/watch?v=2CN4MsPc6kQ",
   "current_tab": "videos"
 }
