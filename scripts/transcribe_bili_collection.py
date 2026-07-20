@@ -8,6 +8,13 @@ from typing import Dict, List, Optional
 from urllib.parse import parse_qs, urlparse
 
 from faster_whisper import WhisperModel
+from transcription_integrity import (
+    atomic_write_text_pair,
+    probe_audio_duration,
+    transcribe_audio_chunked,
+    validate_download_duration,
+    validate_transcription,
+)
 
 SOURCE_URL = os.getenv("BILIBILI_SOURCE_URL", "").strip()
 COOKIES_FILE = Path(os.getenv("BILIBILI_COOKIES_FILE", "cookies.txt"))
@@ -20,6 +27,9 @@ AUDIO_FORMAT = os.getenv("AUDIO_FORMAT", "mp3")
 AUDIO_QUALITY = os.getenv("AUDIO_QUALITY", "7")
 BEAM_SIZE = int(os.getenv("BEAM_SIZE", "1"))
 VAD_FILTER = os.getenv("VAD_FILTER", "1") == "1"
+TRANSCRIBE_CHUNK_SECONDS = int(os.getenv("TRANSCRIBE_CHUNK_SECONDS", "1800"))
+MAX_TRAILING_GAP_SECONDS = float(os.getenv("MAX_TRAILING_GAP_SECONDS", "120"))
+MAX_TRAILING_GAP_RATIO = float(os.getenv("MAX_TRAILING_GAP_RATIO", "0.10"))
 GIT_BRANCH = os.getenv("GITHUB_REF_NAME", "").strip()
 
 
@@ -248,6 +258,7 @@ def build_queue_from_entries(entries: List[Dict], fallback_bvid: str = "") -> Li
             "page": detect_page(url) or 1,
             "title": title,
             "url": url,
+            "duration": e.get("duration"),
         })
     return queue
 
@@ -276,6 +287,7 @@ def try_extract_entries_from_data(data: Dict, base_bvid: str) -> List[Dict]:
             "page": page,
             "title": title,
             "url": url,
+            "duration": e.get("duration"),
         })
     return queue
 
@@ -342,6 +354,7 @@ def build_single_item_queue(base_url: str, base_bvid: str) -> List[Dict]:
         "page": 1,
         "title": base_bvid or DESTINATION,
         "url": base_url,
+        "duration": None,
     }]
 
 
@@ -446,41 +459,24 @@ def load_model() -> WhisperModel:
     return WhisperModel(MODEL_NAME, device=DEVICE, compute_type=COMPUTE_TYPE)
 
 
-def transcribe_audio(model: WhisperModel, audio_path: Path) -> Dict:
-    segments, info = model.transcribe(
-        str(audio_path),
-        language=LANGUAGE if LANGUAGE else None,
-        beam_size=BEAM_SIZE,
-        vad_filter=VAD_FILTER,
-        condition_on_previous_text=False,
+def transcribe_audio(model: WhisperModel, audio_path: Path, audio_duration: float) -> Dict:
+    return transcribe_audio_chunked(
+        model, audio_path, audio_duration, TMP_DIR, run,
+        {
+            "language": LANGUAGE if LANGUAGE else None,
+            "beam_size": BEAM_SIZE,
+            "vad_filter": VAD_FILTER,
+            "condition_on_previous_text": False,
+        },
+        mmss_mmm,
+        TRANSCRIBE_CHUNK_SECONDS,
     )
-
-    ts_lines = []
-    plain_lines = []
-    kept_segments = 0
-
-    for seg in segments:
-        text = (seg.text or "").strip()
-        if not text:
-            continue
-        kept_segments += 1
-        ts_lines.append(f"[{mmss_mmm(seg.start)} --> {mmss_mmm(seg.end)}] {text}")
-        plain_lines.append(text)
-
-    return {
-        "language": getattr(info, "language", ""),
-        "language_probability": getattr(info, "language_probability", ""),
-        "segments": kept_segments,
-        "timestamp_text": "\n".join(ts_lines).strip(),
-        "plain_text": "\n".join(plain_lines).strip(),
-    }
 
 
 def write_outputs(item: Dict, result: Dict):
     ts_body = (result.get("timestamp_text", "").strip() + "\n") if result.get("timestamp_text") else ""
     plain_body = (result.get("plain_text", "").strip() + "\n") if result.get("plain_text") else ""
-    atomic_write_text(ts_output_path(item), ts_body)
-    atomic_write_text(plain_output_path(item), plain_body)
+    atomic_write_text_pair(ts_output_path(item), ts_body, plain_output_path(item), plain_body)
 
 
 def cleanup_temp_file(path: Optional[Path]):
@@ -537,9 +533,13 @@ def main():
     try:
         save_progress("downloading_audio", current=next_item, queue_total=len(queue), queue_index=idx)
         audio_path = download_audio(next_item["url"], next_item["item_id"])
+        audio_duration = probe_audio_duration(audio_path, run)
+        validate_download_duration(next_item, audio_duration)
+        log(f"[ok] downloaded audio duration: {audio_duration:.3f}s")
 
         save_progress("transcribing", current=next_item, queue_total=len(queue), queue_index=idx)
-        result = transcribe_audio(model, audio_path)
+        result = transcribe_audio(model, audio_path, audio_duration)
+        validate_transcription(result, MAX_TRAILING_GAP_SECONDS, MAX_TRAILING_GAP_RATIO)
 
         save_progress("writing_outputs", current=next_item, queue_total=len(queue), queue_index=idx)
         write_outputs(next_item, result)
@@ -616,6 +616,7 @@ def normalize_queue_items(items: List[Dict]) -> List[Dict]:
             "page": page,
             "title": title,
             "url": url,
+            "duration": item.get("duration"),
         })
     return normalized
 
@@ -651,6 +652,7 @@ def expand_video_to_pages(video_url: str, fallback_title: str = "") -> List[Dict
             "page": page,
             "title": title,
             "url": f"https://www.bilibili.com/video/{base_bvid}?p={page}",
+            "duration": item.get("duration"),
         })
 
     return expanded
@@ -677,6 +679,7 @@ def build_queue_from_collection_entries(entries: List[Dict]) -> List[Dict]:
                 "page": detect_page(url) or 1,
                 "title": fallback_title or bvid or "item",
                 "url": url,
+                "duration": e.get("duration"),
             })
 
     return normalize_queue_items(raw_items)

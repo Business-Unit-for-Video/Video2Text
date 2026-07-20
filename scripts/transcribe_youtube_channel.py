@@ -8,6 +8,13 @@ from typing import Dict, List, Optional
 from urllib.parse import urlsplit, urlunsplit
 
 from faster_whisper import WhisperModel
+from transcription_integrity import (
+    atomic_write_text_pair,
+    probe_audio_duration,
+    transcribe_audio_chunked,
+    validate_download_duration,
+    validate_transcription,
+)
 
 CHANNEL_URL = os.getenv("YOUTUBE_CHANNEL_URL", "").strip()
 COOKIES_FILE = Path(os.getenv("YOUTUBE_COOKIES_FILE", "youtube_cookies.txt"))
@@ -22,6 +29,9 @@ AUDIO_FORMAT = os.getenv("AUDIO_FORMAT", "mp3")
 AUDIO_QUALITY = os.getenv("AUDIO_QUALITY", "7")
 BEAM_SIZE = int(os.getenv("BEAM_SIZE", "1"))
 VAD_FILTER = os.getenv("VAD_FILTER", "1") in {"1", "true", "True"}
+TRANSCRIBE_CHUNK_SECONDS = int(os.getenv("TRANSCRIBE_CHUNK_SECONDS", "1800"))
+MAX_TRAILING_GAP_SECONDS = float(os.getenv("MAX_TRAILING_GAP_SECONDS", "120"))
+MAX_TRAILING_GAP_RATIO = float(os.getenv("MAX_TRAILING_GAP_RATIO", "0.10"))
 
 INCLUDE_MEMBERS = str(os.getenv("YOUTUBE_INCLUDE_MEMBERS", "false")).strip().lower() in {"1", "true", "yes", "on"}
 GIT_BRANCH = os.getenv("GITHUB_REF_NAME", "").strip()
@@ -252,6 +262,7 @@ def build_item_from_entry(entry: Dict, tab: str) -> Optional[Dict]:
         "title": title,
         "url": url,
         "tab": tab,
+        "duration": entry.get("duration"),
     }
 
 
@@ -355,7 +366,7 @@ def load_model() -> WhisperModel:
     return WhisperModel(MODEL_NAME, device=DEVICE, compute_type=COMPUTE_TYPE)
 
 
-def transcribe_audio(model: WhisperModel, audio_path: Path) -> Dict:
+def transcribe_audio(model: WhisperModel, audio_path: Path, audio_duration: float) -> Dict:
     kwargs = {
         "language": LANGUAGE if LANGUAGE else None,
         "beam_size": BEAM_SIZE,
@@ -365,34 +376,16 @@ def transcribe_audio(model: WhisperModel, audio_path: Path) -> Dict:
     if INITIAL_PROMPT:
         kwargs["initial_prompt"] = INITIAL_PROMPT
 
-    segments, info = model.transcribe(str(audio_path), **kwargs)
-
-    ts_lines = []
-    plain_lines = []
-    kept_segments = 0
-
-    for seg in segments:
-        text = (seg.text or "").strip()
-        if not text:
-            continue
-        kept_segments += 1
-        ts_lines.append(f"[{seconds_to_mmss_mmm(seg.start)} --> {seconds_to_mmss_mmm(seg.end)}] {text}")
-        plain_lines.append(text)
-
-    return {
-        "language": getattr(info, "language", ""),
-        "language_probability": getattr(info, "language_probability", ""),
-        "segments": kept_segments,
-        "timestamp_text": "\n".join(ts_lines).strip(),
-        "plain_text": "\n".join(plain_lines).strip(),
-    }
+    return transcribe_audio_chunked(
+        model, audio_path, audio_duration, TMP_DIR, run, kwargs,
+        seconds_to_mmss_mmm, TRANSCRIBE_CHUNK_SECONDS,
+    )
 
 
 def write_outputs(item: Dict, result: Dict):
     ts_body = (result.get("timestamp_text", "").strip() + "\n") if result.get("timestamp_text") else ""
     plain_body = (result.get("plain_text", "").strip() + "\n") if result.get("plain_text") else ""
-    atomic_write_text(ts_output_path(item), ts_body)
-    atomic_write_text(plain_output_path(item), plain_body)
+    atomic_write_text_pair(ts_output_path(item), ts_body, plain_output_path(item), plain_body)
 
 
 def cleanup_temp_file(path: Optional[Path]):
@@ -449,9 +442,13 @@ def main():
     try:
         save_progress("downloading_audio", current=next_item, queue_total=len(queue), queue_index=idx)
         audio_path = download_audio(next_item["url"], next_item["id"])
+        audio_duration = probe_audio_duration(audio_path, run)
+        validate_download_duration(next_item, audio_duration)
+        log(f"[ok] downloaded audio duration: {audio_duration:.3f}s")
 
         save_progress("transcribing", current=next_item, queue_total=len(queue), queue_index=idx)
-        result = transcribe_audio(model, audio_path)
+        result = transcribe_audio(model, audio_path, audio_duration)
+        validate_transcription(result, MAX_TRAILING_GAP_SECONDS, MAX_TRAILING_GAP_RATIO)
 
         save_progress("writing_outputs", current=next_item, queue_total=len(queue), queue_index=idx)
         write_outputs(next_item, result)

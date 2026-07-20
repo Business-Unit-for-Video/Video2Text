@@ -8,6 +8,12 @@ from pathlib import Path
 from typing import Dict, List, Optional
 
 from faster_whisper import WhisperModel
+from transcription_integrity import (
+    probe_audio_duration,
+    transcribe_audio_chunked,
+    validate_download_duration,
+    validate_transcription,
+)
 
 SPACE_URL = os.getenv("BILIBILI_SPACE_URL", "https://space.bilibili.com/28152637/video")
 COOKIES_FILE = Path(os.getenv("BILIBILI_COOKIES_FILE", "cookies.txt"))
@@ -31,6 +37,9 @@ AUDIO_FORMAT = os.getenv("AUDIO_FORMAT", "mp3")
 AUDIO_QUALITY = os.getenv("AUDIO_QUALITY", "7")
 BEAM_SIZE = int(os.getenv("BEAM_SIZE", "1"))
 VAD_FILTER = os.getenv("VAD_FILTER", "1") == "1"
+TRANSCRIBE_CHUNK_SECONDS = int(os.getenv("TRANSCRIBE_CHUNK_SECONDS", "1800"))
+MAX_TRAILING_GAP_SECONDS = float(os.getenv("MAX_TRAILING_GAP_SECONDS", "120"))
+MAX_TRAILING_GAP_RATIO = float(os.getenv("MAX_TRAILING_GAP_RATIO", "0.10"))
 GIT_BRANCH = os.getenv("GITHUB_REF_NAME", "").strip()
 
 
@@ -192,7 +201,8 @@ def extract_queue_from_space() -> List[Dict]:
         queue.append({
             "id": bvid,
             "title": title,
-            "url": url
+            "url": url,
+            "duration": e.get("duration"),
         })
 
     if not queue:
@@ -260,30 +270,22 @@ def load_model() -> WhisperModel:
     return WhisperModel(MODEL_NAME, device=DEVICE, compute_type=COMPUTE_TYPE)
 
 
-def transcribe_audio(model: WhisperModel, audio_path: Path) -> Dict:
-    segments, info = model.transcribe(
-        str(audio_path),
-        language=LANGUAGE if LANGUAGE else None,
-        beam_size=BEAM_SIZE,
-        vad_filter=VAD_FILTER,
-        condition_on_previous_text=False,
+def transcribe_audio(model: WhisperModel, audio_path: Path, audio_duration: float) -> Dict:
+    result = transcribe_audio_chunked(
+        model, audio_path, audio_duration, TMP_DIR, run,
+        {
+            "language": LANGUAGE if LANGUAGE else None,
+            "beam_size": BEAM_SIZE,
+            "vad_filter": VAD_FILTER,
+            "condition_on_previous_text": False,
+        },
+        seconds_to_hms,
+        TRANSCRIBE_CHUNK_SECONDS,
     )
-
-    lines = []
-    seg_count = 0
-    for seg in segments:
-        seg_count += 1
-        text = (seg.text or "").strip()
-        if not text:
-            continue
-        lines.append(f"[{seconds_to_hms(seg.start)} - {seconds_to_hms(seg.end)}] {text}")
-
-    return {
-        "language": getattr(info, "language", ""),
-        "language_probability": getattr(info, "language_probability", ""),
-        "segments": seg_count,
-        "text": "\n".join(lines).strip(),
-    }
+    # Preserve the legacy single text field and timestamp delimiter.
+    result["text"] = result.pop("timestamp_text").replace(" --> ", " - ")
+    result["plain_text"] = result["text"]
+    return result
 
 
 def write_transcript(item: Dict, result: Dict):
@@ -360,9 +362,13 @@ def main():
     try:
         save_progress("downloading_audio", current=next_item, queue_total=len(queue), queue_index=idx)
         audio_path = download_audio(next_item["url"], next_item["id"])
+        audio_duration = probe_audio_duration(audio_path, run)
+        validate_download_duration(next_item, audio_duration)
+        log(f"[ok] downloaded audio duration: {audio_duration:.3f}s")
 
         save_progress("transcribing", current=next_item, queue_total=len(queue), queue_index=idx)
-        result = transcribe_audio(model, audio_path)
+        result = transcribe_audio(model, audio_path, audio_duration)
+        validate_transcription(result, MAX_TRAILING_GAP_SECONDS, MAX_TRAILING_GAP_RATIO)
 
         save_progress("writing_transcript", current=next_item, queue_total=len(queue), queue_index=idx)
         write_transcript(next_item, result)
