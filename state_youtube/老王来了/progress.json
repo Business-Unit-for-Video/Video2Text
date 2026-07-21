@@ -1,15 +1,15 @@
 {
-  "status": "error",
-  "note": "RuntimeError('transcription is incomplete: audio=240.288s, transcript_end=5.460s, trailing_gap=234.828s, allowed=120.000s')",
+  "status": "done_one",
+  "note": "one video processed, more pending",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
   "queue_total": 1029,
-  "queue_index": 98,
-  "updated_at": 1784598582,
-  "updated_at_readable": "2026-07-21 01:49:42",
-  "current_video_id": "IHBpylX-4BQ",
-  "current_title": "10万粉履行承诺：真跳了！",
-  "current_url": "https://www.youtube.com/watch?v=IHBpylX-4BQ",
+  "queue_index": 99,
+  "updated_at": 1784598717,
+  "updated_at_readable": "2026-07-21 01:51:57",
+  "current_video_id": "vBO20dBK9Cs",
+  "current_title": "今早的洛杉矶：黑云压城城欲催，欲饮琵琶马上风，醉卧沙场君莫笑，古来征战几人回！",
+  "current_url": "https://www.youtube.com/watch?v=vBO20dBK9Cs",
   "current_tab": "videos"
 }
