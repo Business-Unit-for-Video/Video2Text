@@ -1,15 +1,15 @@
 {
-  "status": "done_one",
-  "note": "one video processed, more pending",
+  "status": "error",
+  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/-DkIBeWGZ3E.%(ext)s', 'https://www.youtube.com/watch?v=-DkIBeWGZ3E'])",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
   "queue_total": 1029,
-  "queue_index": 105,
-  "updated_at": 1784605340,
-  "updated_at_readable": "2026-07-21 03:42:20",
-  "current_video_id": "4Qe6jFtzr38",
-  "current_title": "手把手教你成为易经大师 高岛流占卜法速成",
-  "current_url": "https://www.youtube.com/watch?v=4Qe6jFtzr38",
+  "queue_index": 106,
+  "updated_at": 1784605437,
+  "updated_at_readable": "2026-07-21 03:43:57",
+  "current_video_id": "-DkIBeWGZ3E",
+  "current_title": "精品录播第10期：数字货币干货大揭秘｜普通人投资防骗指南",
+  "current_url": "https://www.youtube.com/watch?v=-DkIBeWGZ3E",
   "current_tab": "videos"
 }
