@@ -1,15 +1,15 @@
 {
   "status": "error",
-  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/YDmGzzsJGQQ.%(ext)s', 'https://www.youtube.com/watch?v=YDmGzzsJGQQ'])",
+  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/yAMeYZUw4Ic.%(ext)s', 'https://www.youtube.com/watch?v=yAMeYZUw4Ic'])",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
   "queue_total": 1032,
-  "queue_index": 342,
-  "updated_at": 1784775111,
-  "updated_at_readable": "2026-07-23 02:51:51",
-  "current_video_id": "YDmGzzsJGQQ",
-  "current_title": "习近平访美：搭灵棚，坐灵车，驶入不归单行路！A股美股要来小高潮？",
-  "current_url": "https://www.youtube.com/watch?v=YDmGzzsJGQQ",
+  "queue_index": 346,
+  "updated_at": 1784775198,
+  "updated_at_readable": "2026-07-23 02:53:18",
+  "current_video_id": "yAMeYZUw4Ic",
+  "current_title": "终极解密天量印钞并发通缩绝症，大水漫灌的人民币流到哪里去了，为什么老百姓赚不到钱了？",
+  "current_url": "https://www.youtube.com/watch?v=yAMeYZUw4Ic",
   "current_tab": "videos"
 }
