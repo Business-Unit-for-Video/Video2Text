@@ -1,15 +1,15 @@
 {
   "status": "error",
-  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/eTEL99rAFPY.%(ext)s', 'https://www.youtube.com/watch?v=eTEL99rAFPY'])",
+  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/YDmGzzsJGQQ.%(ext)s', 'https://www.youtube.com/watch?v=YDmGzzsJGQQ'])",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
   "queue_total": 1032,
-  "queue_index": 339,
-  "updated_at": 1784775025,
-  "updated_at_readable": "2026-07-23 02:50:25",
-  "current_video_id": "eTEL99rAFPY",
-  "current_title": "习拜会特辑：习遭奇耻大辱，攻台倒计时，京沪深房价重蹈东京大阪覆辙！習拜會特輯：習遭奇恥大辱，攻台倒計時，全國軍管進行時，京滬房價重蹈東京大阪覆轍！",
-  "current_url": "https://www.youtube.com/watch?v=eTEL99rAFPY",
+  "queue_index": 342,
+  "updated_at": 1784775111,
+  "updated_at_readable": "2026-07-23 02:51:51",
+  "current_video_id": "YDmGzzsJGQQ",
+  "current_title": "习近平访美：搭灵棚，坐灵车，驶入不归单行路！A股美股要来小高潮？",
+  "current_url": "https://www.youtube.com/watch?v=YDmGzzsJGQQ",
   "current_tab": "videos"
 }
