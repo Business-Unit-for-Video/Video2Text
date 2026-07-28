@@ -1,15 +1,15 @@
 {
-  "status": "done_one",
-  "note": "one video processed, more pending",
+  "status": "error",
+  "note": "RuntimeError('transcription produced no text')",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
   "queue_total": 1025,
-  "queue_index": 409,
-  "updated_at": 1785252926,
-  "updated_at_readable": "2026-07-28 15:35:26",
-  "current_video_id": "O7zygiaXG8s",
-  "current_title": "Richmond Salmon Festival Canada Day Parade | First \"Pink Camp\" Mobilization | Poor Audio Due to W...",
-  "current_url": "https://www.youtube.com/watch?v=O7zygiaXG8s",
+  "queue_index": 410,
+  "updated_at": 1785253037,
+  "updated_at_readable": "2026-07-28 15:37:17",
+  "current_video_id": "WGNNB0VvsBs",
+  "current_title": "Meet at Steveston Community Centre Library in Fisherman's Wharf, wearing pink!",
+  "current_url": "https://www.youtube.com/watch?v=WGNNB0VvsBs",
   "current_tab": "streams"
 }
