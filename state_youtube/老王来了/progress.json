@@ -1,15 +1,15 @@
 {
-  "status": "done_one",
-  "note": "one video processed, more pending",
+  "status": "error",
+  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/QDKCd4Wrji8.%(ext)s', 'https://www.youtube.com/watch?v=QDKCd4Wrji8'])",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
   "queue_total": 1025,
-  "queue_index": 420,
-  "updated_at": 1785279060,
-  "updated_at_readable": "2026-07-28 22:51:00",
-  "current_video_id": "O1swb1Lp8_M",
-  "current_title": "The long night is endless and I can't sleep, Uncle Wang tells a sad immigrant story: Emily the Angel",
-  "current_url": "https://www.youtube.com/watch?v=O1swb1Lp8_M",
+  "queue_index": 421,
+  "updated_at": 1785279150,
+  "updated_at_readable": "2026-07-28 22:52:30",
+  "current_video_id": "QDKCd4Wrji8",
+  "current_title": "VIP直播：SPACE X体量巨大为什么暴涨？谁在拉抬股价？｜价值分析之我们正在见证百年公司 |成为老王来了的会员",
+  "current_url": "https://www.youtube.com/watch?v=QDKCd4Wrji8",
   "current_tab": "streams"
 }
