@@ -1,15 +1,15 @@
 {
-  "status": "error",
-  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/FQFyzlIbmOM.%(ext)s', 'https://www.youtube.com/watch?v=FQFyzlIbmOM'])",
+  "status": "done_one",
+  "note": "one video processed, more pending",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
   "queue_total": 1025,
-  "queue_index": 416,
-  "updated_at": 1785267443,
-  "updated_at_readable": "2026-07-28 19:37:23",
-  "current_video_id": "FQFyzlIbmOM",
-  "current_title": "VIP直播：你可知他爷爷曾让你爷爷死有葬身之地｜论北美华人与印第原住民的百年同盟｜以怨报德，何以为人｜启蒙温哥华印第安地权诉讼与对美加房地产及华人地位的影响｜",
-  "current_url": "https://www.youtube.com/watch?v=FQFyzlIbmOM",
+  "queue_index": 417,
+  "updated_at": 1785268732,
+  "updated_at_readable": "2026-07-28 19:58:52",
+  "current_video_id": "YPJhHuYvebw",
+  "current_title": "温哥华正在死去：老王从政录系列1再次震惊于华人的无知与麻木",
+  "current_url": "https://www.youtube.com/watch?v=YPJhHuYvebw",
   "current_tab": "streams"
 }
