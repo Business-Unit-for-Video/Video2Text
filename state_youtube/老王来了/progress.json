@@ -1,15 +1,15 @@
 {
-  "status": "error",
-  "note": "RuntimeError('transcription produced no text')",
+  "status": "done_one",
+  "note": "one video processed, more pending",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
   "queue_total": 1025,
-  "queue_index": 410,
-  "updated_at": 1785253037,
-  "updated_at_readable": "2026-07-28 15:37:17",
-  "current_video_id": "WGNNB0VvsBs",
-  "current_title": "Meet at Steveston Community Centre Library in Fisherman's Wharf, wearing pink!",
-  "current_url": "https://www.youtube.com/watch?v=WGNNB0VvsBs",
+  "queue_index": 411,
+  "updated_at": 1785254471,
+  "updated_at_readable": "2026-07-28 16:01:11",
+  "current_video_id": "cEFYHSvXqu8",
+  "current_title": "\"Mom's Love Letter\" Proves China Isn't Producing Trash Audiences, but Trash Directors | Vancouver...",
+  "current_url": "https://www.youtube.com/watch?v=cEFYHSvXqu8",
   "current_tab": "streams"
 }
