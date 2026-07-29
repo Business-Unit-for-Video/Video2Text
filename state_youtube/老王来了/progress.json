@@ -1,15 +1,15 @@
 {
   "status": "error",
-  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/ddHnqIymtHw.%(ext)s', 'https://www.youtube.com/watch?v=ddHnqIymtHw'])",
+  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/FURbnvq8XVo.%(ext)s', 'https://www.youtube.com/watch?v=FURbnvq8XVo'])",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
   "queue_total": 1024,
-  "queue_index": 441,
-  "updated_at": 1785322144,
-  "updated_at_readable": "2026-07-29 10:49:04",
-  "current_video_id": "ddHnqIymtHw",
-  "current_title": "Decoding Three Technical Mysteries of China Eastern Airlines Flight MU5735: Why Were the Engines ...",
-  "current_url": "https://www.youtube.com/watch?v=ddHnqIymtHw",
+  "queue_index": 442,
+  "updated_at": 1785322229,
+  "updated_at_readable": "2026-07-29 10:50:29",
+  "current_video_id": "FURbnvq8XVo",
+  "current_title": "新华社：工人纷纷躺平 苏修惶惶不安！｜台湾的命运取决于5月15日｜为什么伊朗的底气是中国给的｜中国有钱人都欠江主席一句对不起｜袁木袁木骗人有术，李鹏找榴莲的故事｜",
+  "current_url": "https://www.youtube.com/watch?v=FURbnvq8XVo",
   "current_tab": "streams"
 }
