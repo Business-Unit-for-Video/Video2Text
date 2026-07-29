@@ -1,15 +1,15 @@
 {
   "status": "error",
-  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/IQvq4HU09F0.%(ext)s', 'https://www.youtube.com/watch?v=IQvq4HU09F0'])",
+  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/TSWZ4XEJ5Kc.%(ext)s', 'https://www.youtube.com/watch?v=TSWZ4XEJ5Kc'])",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
   "queue_total": 1024,
-  "queue_index": 524,
-  "updated_at": 1785329931,
-  "updated_at_readable": "2026-07-29 12:58:51",
-  "current_video_id": "IQvq4HU09F0",
-  "current_title": "百刀会VIP：火运未来20年如何发大财｜论中美未来一代的商业机会",
-  "current_url": "https://www.youtube.com/watch?v=IQvq4HU09F0",
+  "queue_index": 526,
+  "updated_at": 1785330040,
+  "updated_at_readable": "2026-07-29 13:00:40",
+  "current_video_id": "TSWZ4XEJ5Kc",
+  "current_title": "王洪文被叶剑英玩死｜毛泽东说他是刘盆子｜结局却比刘盆子惨一万倍｜王洪文研发聚能光子炮和太阳能打火机的故事",
+  "current_url": "https://www.youtube.com/watch?v=TSWZ4XEJ5Kc",
   "current_tab": "streams"
 }
