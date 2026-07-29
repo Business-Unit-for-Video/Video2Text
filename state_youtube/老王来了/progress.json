@@ -1,15 +1,15 @@
 {
   "status": "error",
-  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/RKFYXZGQ41M.%(ext)s', 'https://www.youtube.com/watch?v=RKFYXZGQ41M'])",
+  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/Fe_I9O4obKs.%(ext)s', 'https://www.youtube.com/watch?v=Fe_I9O4obKs'])",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
   "queue_total": 1024,
-  "queue_index": 582,
-  "updated_at": 1785334165,
-  "updated_at_readable": "2026-07-29 14:09:25",
-  "current_video_id": "RKFYXZGQ41M",
-  "current_title": "周末大瓜：罗永浩摩擦贾国龙，西贝口玉龙！｜UBC大学生人群对查理柯克遇刺的真实反应田野调查统计",
-  "current_url": "https://www.youtube.com/watch?v=RKFYXZGQ41M",
+  "queue_index": 584,
+  "updated_at": 1785334564,
+  "updated_at_readable": "2026-07-29 14:16:04",
+  "current_video_id": "Fe_I9O4obKs",
+  "current_title": "VIP30金融实战教室：破产重整实操大法｜成为老王来了的会员",
+  "current_url": "https://www.youtube.com/watch?v=Fe_I9O4obKs",
   "current_tab": "streams"
 }
