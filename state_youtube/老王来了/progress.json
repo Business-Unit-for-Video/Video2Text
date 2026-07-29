@@ -1,15 +1,15 @@
 {
   "status": "error",
-  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/-0lFdtFFcyI.%(ext)s', 'https://www.youtube.com/watch?v=-0lFdtFFcyI'])",
+  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/Y8z3yc7VyMo.%(ext)s', 'https://www.youtube.com/watch?v=Y8z3yc7VyMo'])",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
   "queue_total": 1024,
-  "queue_index": 447,
-  "updated_at": 1785322855,
-  "updated_at_readable": "2026-07-29 11:00:55",
-  "current_video_id": "-0lFdtFFcyI",
-  "current_title": "他们没告诉我总统这份工作这么危险：川普再次遭遇乌龙行刺｜付鹏出海遭到群殴｜江西小粉红打国旗登山遍地垃圾｜上海两女地铁大撕逼",
-  "current_url": "https://www.youtube.com/watch?v=-0lFdtFFcyI",
+  "queue_index": 448,
+  "updated_at": 1785322951,
+  "updated_at_readable": "2026-07-29 11:02:31",
+  "current_video_id": "Y8z3yc7VyMo",
+  "current_title": "投机取巧终有命，孙空子可能要出大事｜周末玄学与观众来信",
+  "current_url": "https://www.youtube.com/watch?v=Y8z3yc7VyMo",
   "current_tab": "streams"
 }
