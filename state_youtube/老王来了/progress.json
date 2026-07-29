@@ -1,15 +1,15 @@
 {
-  "status": "error",
-  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/60yoBM4B_ek.%(ext)s', 'https://www.youtube.com/watch?v=60yoBM4B_ek'])",
+  "status": "done_one",
+  "note": "one video processed, more pending",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
   "queue_total": 1025,
-  "queue_index": 424,
-  "updated_at": 1785287658,
-  "updated_at_readable": "2026-07-29 01:14:18",
-  "current_video_id": "60yoBM4B_ek",
-  "current_title": "VIP：民主干货之对比美式民主与中式独裁硬知识｜老王发明的华人新手村民主选举的绝招（美国加拿大第一次出现）｜成为老王来了的会员",
-  "current_url": "https://www.youtube.com/watch?v=60yoBM4B_ek",
+  "queue_index": 425,
+  "updated_at": 1785290372,
+  "updated_at_readable": "2026-07-29 01:59:32",
+  "current_video_id": "A9HKtvbA6qM",
+  "current_title": "干货公开10分钟（节选自百刀会）：黄金市场的4大因素与2大参考系｜黄金为什么下跌及要跌多久｜年轻人的爱情、婚姻与生活观：五天鉴别好男人大法｜成为老王来了的会员",
+  "current_url": "https://www.youtube.com/watch?v=A9HKtvbA6qM",
   "current_tab": "streams"
 }
