@@ -1,15 +1,15 @@
 {
   "status": "error",
-  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/qmcCsj687Fc.%(ext)s', 'https://www.youtube.com/watch?v=qmcCsj687Fc'])",
+  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/-0lFdtFFcyI.%(ext)s', 'https://www.youtube.com/watch?v=-0lFdtFFcyI'])",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
   "queue_total": 1024,
-  "queue_index": 446,
-  "updated_at": 1785322726,
-  "updated_at_readable": "2026-07-29 10:58:46",
-  "current_video_id": "qmcCsj687Fc",
-  "current_title": "天下未乱回先乱｜党妈不让你知道的陕甘回乱史的现代余波",
-  "current_url": "https://www.youtube.com/watch?v=qmcCsj687Fc",
+  "queue_index": 447,
+  "updated_at": 1785322855,
+  "updated_at_readable": "2026-07-29 11:00:55",
+  "current_video_id": "-0lFdtFFcyI",
+  "current_title": "他们没告诉我总统这份工作这么危险：川普再次遭遇乌龙行刺｜付鹏出海遭到群殴｜江西小粉红打国旗登山遍地垃圾｜上海两女地铁大撕逼",
+  "current_url": "https://www.youtube.com/watch?v=-0lFdtFFcyI",
   "current_tab": "streams"
 }
