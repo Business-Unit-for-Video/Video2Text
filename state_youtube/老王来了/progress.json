@@ -1,15 +1,15 @@
 {
   "status": "error",
-  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/qOhPNS3fAMs.%(ext)s', 'https://www.youtube.com/watch?v=qOhPNS3fAMs'])",
+  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/BoUttlFddCM.%(ext)s', 'https://www.youtube.com/watch?v=BoUttlFddCM'])",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
   "queue_total": 1024,
-  "queue_index": 577,
-  "updated_at": 1785333637,
-  "updated_at_readable": "2026-07-29 14:00:37",
-  "current_video_id": "qOhPNS3fAMs",
-  "current_title": "周日紧急声明：关于切片频道主中出现令人发指的恶劣小人行径的震惊简报，利益面前失去底线，拿兴拿兴两年白讲了！",
-  "current_url": "https://www.youtube.com/watch?v=qOhPNS3fAMs",
+  "queue_index": 578,
+  "updated_at": 1785333731,
+  "updated_at_readable": "2026-07-29 14:02:11",
+  "current_video_id": "BoUttlFddCM",
+  "current_title": "论人类的劣根性｜偷偷颂几句圣",
+  "current_url": "https://www.youtube.com/watch?v=BoUttlFddCM",
   "current_tab": "streams"
 }
