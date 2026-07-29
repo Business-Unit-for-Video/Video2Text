@@ -1,15 +1,15 @@
 {
   "status": "error",
-  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/5xvRaxJVuEk.%(ext)s', 'https://www.youtube.com/watch?v=5xvRaxJVuEk'])",
+  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/KLYW14E5RQo.%(ext)s', 'https://www.youtube.com/watch?v=KLYW14E5RQo'])",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
   "queue_total": 1025,
-  "queue_index": 729,
-  "updated_at": 1785353368,
-  "updated_at_readable": "2026-07-29 19:29:28",
-  "current_video_id": "5xvRaxJVuEk",
-  "current_title": "逼习退位，不像内斗更像交班：论李嘉诚的投名状｜人币加币澳元汇率还有20%下跌空间｜論佛國佛教與佛法",
-  "current_url": "https://www.youtube.com/watch?v=5xvRaxJVuEk",
+  "queue_index": 733,
+  "updated_at": 1785353471,
+  "updated_at_readable": "2026-07-29 19:31:11",
+  "current_video_id": "KLYW14E5RQo",
+  "current_title": "中共风向突变真相：为什么放过嘉诚打夹头｜老习家捞了多少？美国要出报告！｜周末玄学鬼故事（下）",
+  "current_url": "https://www.youtube.com/watch?v=KLYW14E5RQo",
   "current_tab": "streams"
 }
