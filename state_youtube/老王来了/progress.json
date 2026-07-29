@@ -1,15 +1,15 @@
 {
   "status": "error",
-  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/gC7bFZFZXpQ.%(ext)s', 'https://www.youtube.com/watch?v=gC7bFZFZXpQ'])",
+  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/f6dqh1e2oNE.%(ext)s', 'https://www.youtube.com/watch?v=f6dqh1e2oNE'])",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
   "queue_total": 1024,
-  "queue_index": 470,
-  "updated_at": 1785324440,
-  "updated_at_readable": "2026-07-29 11:27:20",
-  "current_video_id": "gC7bFZFZXpQ",
-  "current_title": "VIP Livestream: Secrets of the Capital Market (1) Capital is Nothing But a Concubine for the Fami...",
-  "current_url": "https://www.youtube.com/watch?v=gC7bFZFZXpQ",
+  "queue_index": 472,
+  "updated_at": 1785324563,
+  "updated_at_readable": "2026-07-29 11:29:23",
+  "current_video_id": "f6dqh1e2oNE",
+  "current_title": "慢聊老王台湾行：为什么老一代大陆人会莫名喜欢台湾？",
+  "current_url": "https://www.youtube.com/watch?v=f6dqh1e2oNE",
   "current_tab": "streams"
 }
