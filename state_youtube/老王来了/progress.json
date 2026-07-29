@@ -1,15 +1,15 @@
 {
   "status": "error",
-  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/o-qRVv6WlgQ.%(ext)s', 'https://www.youtube.com/watch?v=o-qRVv6WlgQ'])",
+  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/mF_CUSOlDMw.%(ext)s', 'https://www.youtube.com/watch?v=mF_CUSOlDMw'])",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
   "queue_total": 1024,
-  "queue_index": 444,
-  "updated_at": 1785322509,
-  "updated_at_readable": "2026-07-29 10:55:09",
-  "current_video_id": "o-qRVv6WlgQ",
-  "current_title": "玄学故事1：｜苹果与英伟达的必然衰落｜人类的硅基进化与灵魂离体｜精准指向梦｜破产送外卖中年老板和他的自闭症儿子｜初中生平行世界亲历记｜闽南常亡魂｜",
-  "current_url": "https://www.youtube.com/watch?v=o-qRVv6WlgQ",
+  "queue_index": 445,
+  "updated_at": 1785322643,
+  "updated_at_readable": "2026-07-29 10:57:23",
+  "current_video_id": "mF_CUSOlDMw",
+  "current_title": "VIP直播：详解素女经证道之旅｜中年如何增大｜前列腺钙化与阴道黏连｜100%患率的青春期手Y后遗症｜100%患率的露西进化高潮截断症｜了解更多硬核知识成为老王来了的会员",
+  "current_url": "https://www.youtube.com/watch?v=mF_CUSOlDMw",
   "current_tab": "streams"
 }
