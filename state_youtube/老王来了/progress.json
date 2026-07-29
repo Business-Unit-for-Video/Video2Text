@@ -1,15 +1,15 @@
 {
   "status": "error",
-  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/FURbnvq8XVo.%(ext)s', 'https://www.youtube.com/watch?v=FURbnvq8XVo'])",
+  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/ZvdgnRPdh-E.%(ext)s', 'https://www.youtube.com/watch?v=ZvdgnRPdh-E'])",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
   "queue_total": 1024,
-  "queue_index": 442,
-  "updated_at": 1785322229,
-  "updated_at_readable": "2026-07-29 10:50:29",
-  "current_video_id": "FURbnvq8XVo",
-  "current_title": "新华社：工人纷纷躺平 苏修惶惶不安！｜台湾的命运取决于5月15日｜为什么伊朗的底气是中国给的｜中国有钱人都欠江主席一句对不起｜袁木袁木骗人有术，李鹏找榴莲的故事｜",
-  "current_url": "https://www.youtube.com/watch?v=FURbnvq8XVo",
+  "queue_index": 443,
+  "updated_at": 1785322366,
+  "updated_at_readable": "2026-07-29 10:52:46",
+  "current_video_id": "ZvdgnRPdh-E",
+  "current_title": "玄学故事2：惠能大师挨一刀的故事｜诅咒的科学原理｜波兰圣十字教堂度化我教友的故事",
+  "current_url": "https://www.youtube.com/watch?v=ZvdgnRPdh-E",
   "current_tab": "streams"
 }
