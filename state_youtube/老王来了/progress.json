@@ -1,15 +1,15 @@
 {
   "status": "error",
-  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/EIj0SVq30Kc.%(ext)s', 'https://www.youtube.com/watch?v=EIj0SVq30Kc'])",
+  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/VfrXVKYyIsU.%(ext)s', 'https://www.youtube.com/watch?v=VfrXVKYyIsU'])",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
   "queue_total": 1024,
-  "queue_index": 574,
-  "updated_at": 1785333406,
-  "updated_at_readable": "2026-07-29 13:56:46",
-  "current_video_id": "EIj0SVq30Kc",
-  "current_title": "VIP32吴亦凡真相：他到底得罪了谁？",
-  "current_url": "https://www.youtube.com/watch?v=EIj0SVq30Kc",
+  "queue_index": 576,
+  "updated_at": 1785333496,
+  "updated_at_readable": "2026-07-29 13:58:16",
+  "current_video_id": "VfrXVKYyIsU",
+  "current_title": "老罗回国有点心虚，西贝会不会搞罗永浩？｜老贾面色有点黑｜福建舰完成历史性弹射试验",
+  "current_url": "https://www.youtube.com/watch?v=VfrXVKYyIsU",
   "current_tab": "streams"
 }
