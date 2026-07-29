@@ -1,15 +1,15 @@
 {
   "status": "error",
-  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/HTWPtX8pv0w.%(ext)s', 'https://www.youtube.com/watch?v=HTWPtX8pv0w'])",
+  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/JXaQdyf096M.%(ext)s', 'https://www.youtube.com/watch?v=JXaQdyf096M'])",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
   "queue_total": 1024,
-  "queue_index": 499,
-  "updated_at": 1785326970,
-  "updated_at_readable": "2026-07-29 12:09:30",
-  "current_video_id": "HTWPtX8pv0w",
-  "current_title": "周末玄学：APP红外摄像头驱鬼的最清晰录像｜狐妖冒充北京国学育儿专家的真事儿｜亲爹被喇嘛勾魂夺舍偏财的经理｜成为老王来了的会员",
-  "current_url": "https://www.youtube.com/watch?v=HTWPtX8pv0w",
+  "queue_index": 500,
+  "updated_at": 1785327069,
+  "updated_at_readable": "2026-07-29 12:11:09",
+  "current_video_id": "JXaQdyf096M",
+  "current_title": "VIP40：为什么执念于张又侠造反重回改开？台海战后的惨状！｜如何发大财保大命？娇娜暗示给你的真实世界！",
+  "current_url": "https://www.youtube.com/watch?v=JXaQdyf096M",
   "current_tab": "streams"
 }
