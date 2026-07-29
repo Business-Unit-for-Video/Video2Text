@@ -1,15 +1,15 @@
 {
   "status": "error",
-  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/cS-XhEfNHps.%(ext)s', 'https://www.youtube.com/watch?v=cS-XhEfNHps'])",
+  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/RIwagKAUltY.%(ext)s', 'https://www.youtube.com/watch?v=RIwagKAUltY'])",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
   "queue_total": 1024,
-  "queue_index": 708,
-  "updated_at": 1785346372,
-  "updated_at_readable": "2026-07-29 17:32:52",
-  "current_video_id": "cS-XhEfNHps",
-  "current_title": "人间奇葩来信集：白虎女孩｜私生子的困惑｜叔我太有钱了没方向了怎么办？",
-  "current_url": "https://www.youtube.com/watch?v=cS-XhEfNHps",
+  "queue_index": 709,
+  "updated_at": 1785346455,
+  "updated_at_readable": "2026-07-29 17:34:15",
+  "current_video_id": "RIwagKAUltY",
+  "current_title": "李大钊何来绞刑这么洋的死法？｜为什么是张作霖？｜为什么苏联对大使馆被砸睁一只眼闭一只眼？",
+  "current_url": "https://www.youtube.com/watch?v=RIwagKAUltY",
   "current_tab": "streams"
 }
