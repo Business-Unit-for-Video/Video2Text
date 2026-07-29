@@ -1,15 +1,15 @@
 {
   "status": "error",
-  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/mF_CUSOlDMw.%(ext)s', 'https://www.youtube.com/watch?v=mF_CUSOlDMw'])",
+  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/qmcCsj687Fc.%(ext)s', 'https://www.youtube.com/watch?v=qmcCsj687Fc'])",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
   "queue_total": 1024,
-  "queue_index": 445,
-  "updated_at": 1785322643,
-  "updated_at_readable": "2026-07-29 10:57:23",
-  "current_video_id": "mF_CUSOlDMw",
-  "current_title": "VIP直播：详解素女经证道之旅｜中年如何增大｜前列腺钙化与阴道黏连｜100%患率的青春期手Y后遗症｜100%患率的露西进化高潮截断症｜了解更多硬核知识成为老王来了的会员",
-  "current_url": "https://www.youtube.com/watch?v=mF_CUSOlDMw",
+  "queue_index": 446,
+  "updated_at": 1785322726,
+  "updated_at_readable": "2026-07-29 10:58:46",
+  "current_video_id": "qmcCsj687Fc",
+  "current_title": "天下未乱回先乱｜党妈不让你知道的陕甘回乱史的现代余波",
+  "current_url": "https://www.youtube.com/watch?v=qmcCsj687Fc",
   "current_tab": "streams"
 }
