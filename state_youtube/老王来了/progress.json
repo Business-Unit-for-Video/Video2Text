@@ -1,15 +1,15 @@
 {
   "status": "error",
-  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/Q-efYZLAsVM.%(ext)s', 'https://www.youtube.com/watch?v=Q-efYZLAsVM'])",
+  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/cS-XhEfNHps.%(ext)s', 'https://www.youtube.com/watch?v=cS-XhEfNHps'])",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
   "queue_total": 1024,
-  "queue_index": 706,
-  "updated_at": 1785346288,
-  "updated_at_readable": "2026-07-29 17:31:28",
-  "current_video_id": "Q-efYZLAsVM",
-  "current_title": "VIP直播（4）：中国证券市场繁花初绽与胎毒",
-  "current_url": "https://www.youtube.com/watch?v=Q-efYZLAsVM",
+  "queue_index": 708,
+  "updated_at": 1785346372,
+  "updated_at_readable": "2026-07-29 17:32:52",
+  "current_video_id": "cS-XhEfNHps",
+  "current_title": "人间奇葩来信集：白虎女孩｜私生子的困惑｜叔我太有钱了没方向了怎么办？",
+  "current_url": "https://www.youtube.com/watch?v=cS-XhEfNHps",
   "current_tab": "streams"
 }
