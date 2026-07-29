@@ -1,15 +1,15 @@
 {
   "status": "error",
-  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/Y8z3yc7VyMo.%(ext)s', 'https://www.youtube.com/watch?v=Y8z3yc7VyMo'])",
+  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/qfJ9tv_pnPs.%(ext)s', 'https://www.youtube.com/watch?v=qfJ9tv_pnPs'])",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
   "queue_total": 1024,
-  "queue_index": 448,
-  "updated_at": 1785322951,
-  "updated_at_readable": "2026-07-29 11:02:31",
-  "current_video_id": "Y8z3yc7VyMo",
-  "current_title": "投机取巧终有命，孙空子可能要出大事｜周末玄学与观众来信",
-  "current_url": "https://www.youtube.com/watch?v=Y8z3yc7VyMo",
+  "queue_index": 449,
+  "updated_at": 1785323035,
+  "updated_at_readable": "2026-07-29 11:03:55",
+  "current_video_id": "qfJ9tv_pnPs",
+  "current_title": "VIP直播：解剖拼多多7大死穴：为什么黄峥是个捅漏了天急着跑路的熊孩子！揭秘现在谁是真正的老板！新来的老板如何策划拼多多惊天改革逃避倒闭命运！他能成功吗？",
+  "current_url": "https://www.youtube.com/watch?v=qfJ9tv_pnPs",
   "current_tab": "streams"
 }
