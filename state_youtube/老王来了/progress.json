@@ -1,15 +1,15 @@
 {
   "status": "error",
-  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/qfJ9tv_pnPs.%(ext)s', 'https://www.youtube.com/watch?v=qfJ9tv_pnPs'])",
+  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/w_yiK7Qv16Q.%(ext)s', 'https://www.youtube.com/watch?v=w_yiK7Qv16Q'])",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
   "queue_total": 1024,
-  "queue_index": 449,
-  "updated_at": 1785323035,
-  "updated_at_readable": "2026-07-29 11:03:55",
-  "current_video_id": "qfJ9tv_pnPs",
-  "current_title": "VIP直播：解剖拼多多7大死穴：为什么黄峥是个捅漏了天急着跑路的熊孩子！揭秘现在谁是真正的老板！新来的老板如何策划拼多多惊天改革逃避倒闭命运！他能成功吗？",
-  "current_url": "https://www.youtube.com/watch?v=qfJ9tv_pnPs",
+  "queue_index": 450,
+  "updated_at": 1785323189,
+  "updated_at_readable": "2026-07-29 11:06:29",
+  "current_video_id": "w_yiK7Qv16Q",
+  "current_title": "老王讲真实的历史故事：外蒙究竟是谁弄丢的？蒙古人怎么突然不能打了？蒙古人为什么喜欢韩国人？",
+  "current_url": "https://www.youtube.com/watch?v=w_yiK7Qv16Q",
   "current_tab": "streams"
 }
