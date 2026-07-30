@@ -1,15 +1,15 @@
 {
-  "status": "error",
-  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/h9qn_Sp44a0.%(ext)s', 'https://www.youtube.com/watch?v=h9qn_Sp44a0'])",
+  "status": "done_one",
+  "note": "one video processed, more pending",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
   "queue_total": 1026,
-  "queue_index": 390,
-  "updated_at": 1785435897,
-  "updated_at_readable": "2026-07-30 18:24:57",
-  "current_video_id": "h9qn_Sp44a0",
-  "current_title": "韩红被立案调查她到底得罪了谁｜美联储3票急加息引发美元震荡｜邹市明和冉莹颖应该移民列治文",
-  "current_url": "https://www.youtube.com/watch?v=h9qn_Sp44a0",
+  "queue_index": 793,
+  "updated_at": 1785438903,
+  "updated_at_readable": "2026-07-30 19:15:03",
+  "current_video_id": "ftnIsn7uUd0",
+  "current_title": "天眼通查看星舰7爆炸原因｜又要劝人离婚了｜中年男女的婚姻与性危机",
+  "current_url": "https://www.youtube.com/watch?v=ftnIsn7uUd0",
   "current_tab": "streams"
 }
