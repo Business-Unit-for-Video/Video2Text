@@ -1,15 +1,15 @@
 {
-  "status": "done_one",
-  "note": "one video processed, more pending",
+  "status": "error",
+  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/PRr77r5wCVw.%(ext)s', 'https://www.youtube.com/watch?v=PRr77r5wCVw'])",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
   "queue_total": 1026,
-  "queue_index": 803,
-  "updated_at": 1785462229,
-  "updated_at_readable": "2026-07-31 01:43:49",
-  "current_video_id": "EADDUXGxLaA",
-  "current_title": "突发新闻特鲁多辞职｜无锡荣家举族迁往加拿大",
-  "current_url": "https://www.youtube.com/watch?v=EADDUXGxLaA",
+  "queue_index": 804,
+  "updated_at": 1785462321,
+  "updated_at_readable": "2026-07-31 01:45:21",
+  "current_video_id": "PRr77r5wCVw",
+  "current_title": "其实女人比男人更好色｜闻香识男人之公母关系少走弯路篇｜16岁以下禁入",
+  "current_url": "https://www.youtube.com/watch?v=PRr77r5wCVw",
   "current_tab": "streams"
 }
