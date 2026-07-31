@@ -1,15 +1,15 @@
 {
-  "status": "error",
-  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/Ey6Nwb-a1Dg.%(ext)s', 'https://www.youtube.com/watch?v=Ey6Nwb-a1Dg'])",
+  "status": "done_one",
+  "note": "one video processed, more pending",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
   "queue_total": 1027,
-  "queue_index": 390,
-  "updated_at": 1785536170,
-  "updated_at_readable": "2026-07-31 22:16:10",
-  "current_video_id": "Ey6Nwb-a1Dg",
-  "current_title": "多伦多线下大聚会及pink team召集活动｜8月1日周六上午12:00奥罗拉足球俱乐部大草坪不见不散",
-  "current_url": "https://www.youtube.com/watch?v=Ey6Nwb-a1Dg",
+  "queue_index": 832,
+  "updated_at": 1785539525,
+  "updated_at_readable": "2026-07-31 23:12:05",
+  "current_video_id": "JlCpju2C_CE",
+  "current_title": "道教真人传道轮回弟子箴言录（1:30:00开始）｜姥爷从去世到投胎全记录｜山西夜宿荒山群鬼入梦记｜论韭菜的秩序与公平",
+  "current_url": "https://www.youtube.com/watch?v=JlCpju2C_CE",
   "current_tab": "streams"
 }
