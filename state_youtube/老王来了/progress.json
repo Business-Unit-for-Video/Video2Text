@@ -1,15 +1,15 @@
 {
-  "status": "done_one",
-  "note": "one video processed, more pending",
+  "status": "error",
+  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/XZoupAbxCIw.%(ext)s', 'https://www.youtube.com/watch?v=XZoupAbxCIw'])",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
   "queue_total": 1027,
-  "queue_index": 885,
-  "updated_at": 1785666613,
-  "updated_at_readable": "2026-08-02 10:30:13",
-  "current_video_id": "j88Bv1hjM_g",
-  "current_title": "周末农场直播：一封写给坐台小姐的观众来信｜加拿大华人买汽车旅馆生意的一地鸡毛",
-  "current_url": "https://www.youtube.com/watch?v=j88Bv1hjM_g",
+  "queue_index": 886,
+  "updated_at": 1785666704,
+  "updated_at_readable": "2026-08-02 10:31:44",
+  "current_video_id": "XZoupAbxCIw",
+  "current_title": "郭文贵如何一战成名：盘点资本市场豪杰烟尘",
+  "current_url": "https://www.youtube.com/watch?v=XZoupAbxCIw",
   "current_tab": "streams"
 }
