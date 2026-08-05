@@ -1,15 +1,15 @@
 {
-  "status": "error",
-  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/ansxwx98TxY.%(ext)s', 'https://www.youtube.com/watch?v=ansxwx98TxY'])",
+  "status": "done_one",
+  "note": "one video processed, more pending",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
   "queue_total": 1019,
-  "queue_index": 955,
-  "updated_at": 1785958750,
-  "updated_at_readable": "2026-08-05 19:39:10",
-  "current_video_id": "ansxwx98TxY",
-  "current_title": "周末女观众调戏老王荤段子专场：妳们居然拿王叔做春梦！",
-  "current_url": "https://www.youtube.com/watch?v=ansxwx98TxY",
+  "queue_index": 956,
+  "updated_at": 1785960159,
+  "updated_at_readable": "2026-08-05 20:02:39",
+  "current_video_id": "xfWC6WFYcPM",
+  "current_title": "评2024美国大选首场辩论：川普正常，拜登傻傻下不了台！吉尔违反礼仪冲上去救场。Trump grilled Biden on the stage of 2024 CNN debate.",
+  "current_url": "https://www.youtube.com/watch?v=xfWC6WFYcPM",
   "current_tab": "streams"
 }
