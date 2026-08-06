@@ -1,15 +1,15 @@
 {
-  "status": "done_one",
-  "note": "one video processed, more pending",
+  "status": "error",
+  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/pBPGJeqPYco.%(ext)s', 'https://www.youtube.com/watch?v=pBPGJeqPYco'])",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
   "queue_total": 1020,
-  "queue_index": 974,
-  "updated_at": 1785988948,
-  "updated_at_readable": "2026-08-06 04:02:28",
-  "current_video_id": "P7QROUrsJUQ",
-  "current_title": "朝鲜新义州特首杨斌夭折记｜造大孽志愿军白死百万，大饥荒新义州开放夭折",
-  "current_url": "https://www.youtube.com/watch?v=P7QROUrsJUQ",
+  "queue_index": 975,
+  "updated_at": 1785989039,
+  "updated_at_readable": "2026-08-06 04:03:59",
+  "current_video_id": "pBPGJeqPYco",
+  "current_title": "加场直播温哥华10:30之有求必应无欲则刚，什么是幸福？润人还是润心润肺？",
+  "current_url": "https://www.youtube.com/watch?v=pBPGJeqPYco",
   "current_tab": "streams"
 }
