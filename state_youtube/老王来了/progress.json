@@ -1,15 +1,15 @@
 {
-  "status": "done_one",
-  "note": "one video processed, more pending",
+  "status": "finished",
+  "note": "one video processed, no more pending",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
   "queue_total": 1022,
-  "queue_index": 1021,
-  "updated_at": 1786205804,
-  "updated_at_readable": "2026-08-08 16:16:44",
-  "current_video_id": "dwhZyeTI5YU",
-  "current_title": "英伟达还能不能买？黄sir的崛起与未来",
-  "current_url": "https://www.youtube.com/watch?v=dwhZyeTI5YU",
+  "queue_index": 1022,
+  "updated_at": 1786207680,
+  "updated_at_readable": "2026-08-08 16:48:00",
+  "current_video_id": "TDkXuNFEOc8",
+  "current_title": "美股投资真谛｜东升西降的真相",
+  "current_url": "https://www.youtube.com/watch?v=TDkXuNFEOc8",
   "current_tab": "streams"
 }
