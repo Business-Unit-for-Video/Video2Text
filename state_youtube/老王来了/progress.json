@@ -1,15 +1,15 @@
 {
-  "status": "done_one",
-  "note": "one video processed, more pending",
+  "status": "finished",
+  "note": "one video processed, no more pending",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
   "queue_total": 1025,
-  "queue_index": 392,
-  "updated_at": 1786978380,
-  "updated_at_readable": "2026-08-17 14:53:00",
-  "current_video_id": "sppchZ82wwY",
-  "current_title": "朱镕基逝世，七大政改逐一解剖｜改开时代正式落幕｜为什么说朱镕基是改变了我们每一个人人生轨迹的总理｜成为老王来了的会员",
-  "current_url": "https://www.youtube.com/watch?v=sppchZ82wwY",
+  "queue_index": 393,
+  "updated_at": 1786981059,
+  "updated_at_readable": "2026-08-17 15:37:39",
+  "current_video_id": "a-gNqoksNOo",
+  "current_title": "30分钟处开始，老王讲历史上的镇反运动：毛泽东黑化背信弃义的第一步｜成为老王来了的会员",
+  "current_url": "https://www.youtube.com/watch?v=a-gNqoksNOo",
   "current_tab": "streams"
 }
