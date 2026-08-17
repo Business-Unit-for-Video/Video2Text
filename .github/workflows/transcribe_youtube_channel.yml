@@ -31,13 +31,15 @@ on:
         required: false
         default: false
         type: boolean
+  schedule:
+    - cron: "20 */6 * * *"
 
 permissions:
   contents: write
   actions: write
 
 concurrency:
-  group: youtube-channel-${{ inputs.destination }}-${{ github.ref }}
+  group: youtube-channel-${{ inputs.destination || '老王来了' }}-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
@@ -46,13 +48,13 @@ jobs:
 
 
     env:
-      YOUTUBE_CHANNEL_URL: ${{ inputs.channel_url }}
-      DESTINATION: ${{ inputs.destination }}
-      YOUTUBE_INCLUDE_MEMBERS: ${{ inputs.include_members }}
+      YOUTUBE_CHANNEL_URL: ${{ inputs.channel_url || 'https://www.youtube.com/@dlw2023' }}
+      DESTINATION: ${{ inputs.destination || '老王来了' }}
+      YOUTUBE_INCLUDE_MEMBERS: ${{ inputs.include_members || false }}
       YOUTUBE_COOKIES_FILE: youtube_cookies.txt
-      WHISPER_MODEL: ${{ inputs.whisper_model }}
-      FORCE_RETRANSCRIBE: ${{ inputs.force_retranscribe }}
-      OUTPUT_ROOT: ${{ inputs.output_root }}
+      WHISPER_MODEL: ${{ inputs.whisper_model || 'medium' }}
+      FORCE_RETRANSCRIBE: ${{ inputs.force_retranscribe || false }}
+      OUTPUT_ROOT: ${{ inputs.output_root || '' }}
       WHISPER_DEVICE: cpu
       WHISPER_COMPUTE_TYPE: int8
       WHISPER_LANGUAGE: zh

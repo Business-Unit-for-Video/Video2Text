@@ -10,7 +10,7 @@ Video2Text 用 GitHub Actions 自动转写和整理视频字幕，当前采用**
 | 张雪峰空间转写 | `.github/workflows/transcribe.yml` | 继续原有 `transcripts/` + `state/` 流程。 |
 | B 站合集转写 | `.github/workflows/transcribe_collection.yml` | 输出到 `destinations/<destination>/`，状态在 `state_collections/<destination>/`。 |
 | 单视频转写 | `.github/workflows/transcribe_single_video.yml` | 输出到 `single_videos/<destination>/`，状态在 `state_single_video/<destination>/`。 |
-| YouTube 频道转写 | `.github/workflows/transcribe_youtube_channel.yml` | 输出到 `youtube_channels/<destination>/`，状态在 `state_youtube/<destination>/`。 |
+| YouTube 频道转写 | `.github/workflows/transcribe_youtube_channel.yml` | 输出到 `youtube_channels/<destination>/`，状态在 `state_youtube/<destination>/`；手动入口保留，老王来了默认每 6 小时扫描一次。 |
 | 构建检索切片 | `.github/workflows/build-transcript-chunks.yml` | 扫描带时间戳字幕，产出 `chunks.jsonl` artifact。 |
 | 统计字幕时长 | `.github/workflows/stat_transcripts_duration.yml` | 扫描带时间戳字幕，产出时长/字符统计 artifact。 |
 
