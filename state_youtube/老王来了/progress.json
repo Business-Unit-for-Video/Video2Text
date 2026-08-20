@@ -1,15 +1,11 @@
 {
-  "status": "finished_with_errors",
-  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/ISDGw2keMHQ.%(ext)s', 'https://www.youtube.com/watch?v=ISDGw2keMHQ'])",
+  "status": "finished",
+  "note": "all items completed",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
   "queue_total": 1029,
-  "queue_index": 392,
-  "updated_at": 1787210065,
-  "updated_at_readable": "2026-08-20 07:14:25",
-  "current_video_id": "ISDGw2keMHQ",
-  "current_title": "Double Concentration VIP: The Shocking Unveiling of the Wrongful Convictions of Xiang Zhongfa and...",
-  "current_url": "https://www.youtube.com/watch?v=ISDGw2keMHQ",
-  "current_tab": "streams"
+  "queue_index": 1029,
+  "updated_at": 1787231891,
+  "updated_at_readable": "2026-08-20 13:18:11"
 }
