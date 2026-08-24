@@ -74,7 +74,7 @@ jobs:
         shell: bash
         run: |
           cat > cookies.txt <<'EOF'
-          ${{ secrets.BILIBILI_COOKIES }}
+          ${{ secrets.BILIBILI_SOURCE_COOKIE_FILE_VIDEO2TEXT }}
           EOF
 
       - name: Validate inputs

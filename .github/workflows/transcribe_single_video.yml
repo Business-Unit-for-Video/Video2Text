@@ -98,14 +98,14 @@ jobs:
         shell: bash
         run: |
           cat > youtube_cookies.txt <<'EOF'
-          ${{ secrets.YOUTUBE_COOKIES }}
+          ${{ secrets.YOUTUBE_SOURCE_COOKIE_FILE_VIDEO2TEXT }}
           EOF
 
       - name: Write Bilibili cookies
         shell: bash
         run: |
           cat > bilibili_cookies.txt <<'EOF'
-          ${{ secrets.BILIBILI_COOKIES }}
+          ${{ secrets.BILIBILI_SOURCE_COOKIE_FILE_VIDEO2TEXT }}
           EOF
 
       - name: Prepare workspace
