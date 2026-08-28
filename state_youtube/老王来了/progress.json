@@ -1,15 +1,11 @@
 {
-  "status": "finished_with_errors",
-  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/iq7-EFwrEEM.%(ext)s', 'https://www.youtube.com/watch?v=iq7-EFwrEEM'])",
+  "status": "finished",
+  "note": "all items completed",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
   "queue_total": 1033,
-  "queue_index": 391,
-  "updated_at": 1787916768,
-  "updated_at_readable": "2026-08-28 11:32:48",
-  "current_video_id": "iq7-EFwrEEM",
-  "current_title": "瓜田爆出大瓜，有一种富贵叫做体面：再论识人的重要性｜吉隆口岸末日大片级别灾难死亡人数过千｜世界最幸运的男人包贝尔，难看的视频被瓜田掩盖了！",
-  "current_url": "https://www.youtube.com/watch?v=iq7-EFwrEEM",
-  "current_tab": "streams"
+  "queue_index": 1033,
+  "updated_at": 1787956157,
+  "updated_at_readable": "2026-08-28 22:29:17"
 }
