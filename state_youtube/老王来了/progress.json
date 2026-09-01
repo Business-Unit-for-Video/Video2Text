@@ -1,15 +1,11 @@
 {
-  "status": "finished_with_errors",
-  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/2usnb1IR6-o.%(ext)s', 'https://www.youtube.com/watch?v=2usnb1IR6-o'])",
+  "status": "finished",
+  "note": "all items completed",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
   "queue_total": 1034,
-  "queue_index": 391,
-  "updated_at": 1788240083,
-  "updated_at_readable": "2026-09-01 05:21:23",
-  "current_video_id": "2usnb1IR6-o",
-  "current_title": "李强视察灾区两个欢天喜地的干部可以拖去喂狗吗｜黄金价格可能还有一波跌势回落3900一线｜补完观众来信：赵长鹏与孙宇晨",
-  "current_url": "https://www.youtube.com/watch?v=2usnb1IR6-o",
-  "current_tab": "streams"
+  "queue_index": 1034,
+  "updated_at": 1788263358,
+  "updated_at_readable": "2026-09-01 11:49:18"
 }
