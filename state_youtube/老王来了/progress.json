@@ -1,15 +1,11 @@
 {
-  "status": "finished_with_errors",
-  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/GoOBZBebWTg.%(ext)s', 'https://www.youtube.com/watch?v=GoOBZBebWTg'])",
+  "status": "finished",
+  "note": "all items completed",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
   "queue_total": 1038,
-  "queue_index": 573,
-  "updated_at": 1788539527,
-  "updated_at_readable": "2026-09-04 16:32:07",
-  "current_video_id": "GoOBZBebWTg",
-  "current_title": "四中全会最权威总结｜大傻逼老王直播切腹谢罪！｜",
-  "current_url": "https://www.youtube.com/watch?v=GoOBZBebWTg",
-  "current_tab": "streams"
+  "queue_index": 1038,
+  "updated_at": 1788555089,
+  "updated_at_readable": "2026-09-04 20:51:29"
 }
