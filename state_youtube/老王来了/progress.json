@@ -1,11 +1,15 @@
 {
-  "status": "finished",
-  "note": "all items completed",
+  "status": "finished_with_errors",
+  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/gEPMUOjU9dY.%(ext)s', 'https://www.youtube.com/watch?v=gEPMUOjU9dY'])",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
-  "queue_total": 1038,
-  "queue_index": 1038,
-  "updated_at": 1788555089,
-  "updated_at_readable": "2026-09-04 20:51:29"
+  "queue_total": 1039,
+  "queue_index": 391,
+  "updated_at": 1788583281,
+  "updated_at_readable": "2026-09-05 04:41:21",
+  "current_video_id": "gEPMUOjU9dY",
+  "current_title": "老王竞选大翻车：全网公开道歉！｜请移步老王竞选频道！",
+  "current_url": "https://www.youtube.com/watch?v=gEPMUOjU9dY",
+  "current_tab": "streams"
 }
