@@ -1,15 +1,11 @@
 {
-  "status": "finished_with_errors",
-  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/UyV0Wv6-eSk.%(ext)s', 'https://www.youtube.com/watch?v=UyV0Wv6-eSk'])",
+  "status": "finished",
+  "note": "all items completed",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
-  "queue_total": 1039,
-  "queue_index": 391,
-  "updated_at": 1789016140,
-  "updated_at_readable": "2026-09-10 04:55:40",
-  "current_video_id": "UyV0Wv6-eSk",
-  "current_title": "VIP百刀会：参与加拿大民主选举的切身体会！｜移步竞选频道20:00-21:00观看直播为什么加入前进联盟｜本频道VIP21:30开始！",
-  "current_url": "https://www.youtube.com/watch?v=UyV0Wv6-eSk",
-  "current_tab": "streams"
+  "queue_total": 1038,
+  "queue_index": 1038,
+  "updated_at": 1789039929,
+  "updated_at_readable": "2026-09-10 11:32:09"
 }
