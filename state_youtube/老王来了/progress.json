@@ -1,11 +1,15 @@
 {
-  "status": "finished",
-  "note": "all items completed",
+  "status": "finished_with_errors",
+  "note": "CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--cookies', 'youtube_cookies.txt', '--no-playlist', '-f', 'ba/bestaudio', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/老王来了/g1K1KU7RCCA.%(ext)s', 'https://www.youtube.com/watch?v=g1K1KU7RCCA'])",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "include_members": false,
-  "queue_total": 1043,
-  "queue_index": 1043,
-  "updated_at": 1789594014,
-  "updated_at_readable": "2026-09-16 21:26:54"
+  "queue_total": 1044,
+  "queue_index": 391,
+  "updated_at": 1789621300,
+  "updated_at_readable": "2026-09-17 05:01:40",
+  "current_video_id": "g1K1KU7RCCA",
+  "current_title": "VIP直播：老王竞选感悟，欢迎来到粗鄙新世界｜论人类自媒体时代的民主政治去代理人化",
+  "current_url": "https://www.youtube.com/watch?v=g1K1KU7RCCA",
+  "current_tab": "streams"
 }
