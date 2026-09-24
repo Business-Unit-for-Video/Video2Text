@@ -94,19 +94,47 @@ jobs:
           deno --version
           ffmpeg -version | head -n 1
 
-      - name: Write YouTube cookies
+      - name: Write YouTube cookies (optional for public videos)
         shell: bash
+        env:
+          YOUTUBE_COOKIE_EXPORT: ${{ secrets.YOUTUBE_SOURCE_COOKIE_FILE_VIDEO2TEXT }}
         run: |
-          cat > youtube_cookies.txt <<'EOF'
-          ${{ secrets.YOUTUBE_SOURCE_COOKIE_FILE_VIDEO2TEXT }}
-          EOF
+          python - <<'PY'
+          import os
+          from pathlib import Path
 
-      - name: Write Bilibili cookies
+          content = os.environ.get("YOUTUBE_COOKIE_EXPORT", "")
+          path = Path("youtube_cookies.txt")
+          if content.strip():
+              path.write_text(content, encoding="utf-8", newline="\n")
+              print("YouTube cookie secret found; validating it.")
+          else:
+              path.unlink(missing_ok=True)
+              print("No YouTube cookie secret; yt-dlp will run without YouTube cookies.")
+          PY
+          if [ -s youtube_cookies.txt ]; then
+            python scripts/validate_youtube_cookies.py youtube_cookies.txt
+            chmod 600 youtube_cookies.txt
+          fi
+
+      - name: Write Bilibili cookies (optional)
         shell: bash
+        env:
+          BILIBILI_COOKIE_EXPORT: ${{ secrets.BILIBILI_SOURCE_COOKIE_FILE_VIDEO2TEXT }}
         run: |
-          cat > bilibili_cookies.txt <<'EOF'
-          ${{ secrets.BILIBILI_SOURCE_COOKIE_FILE_VIDEO2TEXT }}
-          EOF
+          python - <<'PY'
+          import os
+          from pathlib import Path
+
+          content = os.environ.get("BILIBILI_COOKIE_EXPORT", "")
+          path = Path("bilibili_cookies.txt")
+          if content.strip():
+              path.write_text(content, encoding="utf-8", newline="\n")
+              print("Bilibili cookie secret found.")
+          else:
+              path.unlink(missing_ok=True)
+              print("No Bilibili cookie secret; yt-dlp will run without Bilibili cookies.")
+          PY
 
       - name: Prepare workspace
         run: |
