@@ -27,6 +27,10 @@ Video2Text 用 GitHub Actions 自动转写和整理视频字幕，当前采用**
 
 统一入口会把新任务写到 `unified_outputs/<source_type>/<destination>/`，旧 workflow 直接运行仍保留原输出目录。
 
+### 转写指定的 YouTube 视频和播放列表
+
+`sources/youtube/` 下的 JSON 清单可以同时列出单视频和播放列表 URL。运行 **transcribe-youtube-channel** workflow_dispatch 时，将 `source_manifest` 设置为清单路径（例如 `sources/youtube/llm-agent-tutorials.json`），并填写 `destination`。转录器会展开列表、去重并沿用队列续跑，每次处理一条；指定清单时按英文原文转录。公开视频不需要配置 YouTube cookies。
+
 ## 输出目录约定
 
 统计和切片工作流会扫描以下带时间戳文本：

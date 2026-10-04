@@ -5,7 +5,12 @@ on:
     inputs:
       channel_url:
         description: "YouTube频道地址，例如 https://www.youtube.com/@channel"
-        required: true
+        required: false
+        type: string
+      source_manifest:
+        description: "YouTube 视频/播放列表清单，必须位于 sources/youtube/"
+        required: false
+        default: ""
         type: string
       destination:
         description: "输出目录名，例如 laowang"
@@ -49,6 +54,7 @@ jobs:
 
     env:
       YOUTUBE_CHANNEL_URL: ${{ inputs.channel_url || 'https://www.youtube.com/@dlw2023' }}
+      YOUTUBE_SOURCE_MANIFEST: ${{ inputs.source_manifest || '' }}
       DESTINATION: ${{ inputs.destination || '老王来了' }}
       YOUTUBE_INCLUDE_MEMBERS: ${{ inputs.include_members || false }}
       YOUTUBE_COOKIES_FILE: youtube_cookies.txt
@@ -57,7 +63,7 @@ jobs:
       OUTPUT_ROOT: ${{ inputs.output_root || '' }}
       WHISPER_DEVICE: cpu
       WHISPER_COMPUTE_TYPE: int8
-      WHISPER_LANGUAGE: zh
+      WHISPER_LANGUAGE: ${{ inputs.source_manifest != '' && 'en' || 'zh' }}
       WHISPER_INITIAL_PROMPT: 请将结果转录为简体中文。以下内容为中国大陆普通话口语。
       AUDIO_FORMAT: mp3
       AUDIO_QUALITY: "7"
@@ -97,7 +103,7 @@ jobs:
           yt-dlp --version
           deno --version
 
-      - name: Write and validate YouTube cookies
+      - name: Write YouTube cookies (optional for public videos)
         shell: bash
         env:
           YOUTUBE_COOKIE_EXPORT: ${{ secrets.YOUTUBE_SOURCE_COOKIE_FILE_VIDEO2TEXT }}
@@ -107,18 +113,40 @@ jobs:
           from pathlib import Path
 
           content = os.environ.get("YOUTUBE_COOKIE_EXPORT", "")
-          if not content.strip():
-              raise SystemExit("YOUTUBE_SOURCE_COOKIE_FILE_VIDEO2TEXT is missing or empty")
-          Path("youtube_cookies.txt").write_text(content, encoding="utf-8", newline="\n")
+          path = Path("youtube_cookies.txt")
+          if content.strip():
+              path.write_text(content, encoding="utf-8", newline="\n")
+              print("YouTube cookie secret found; validating it.")
+          else:
+              path.unlink(missing_ok=True)
+              print("No YouTube cookie secret; yt-dlp will run without YouTube cookies.")
           PY
-          python scripts/validate_youtube_cookies.py youtube_cookies.txt
-          chmod 600 youtube_cookies.txt
+          if [ -s youtube_cookies.txt ]; then
+            python scripts/validate_youtube_cookies.py youtube_cookies.txt
+            chmod 600 youtube_cookies.txt
+          fi
 
       - name: Validate inputs
         shell: bash
         run: |
-          test -n "${YOUTUBE_CHANNEL_URL}" || (echo "channel_url is empty" && exit 1)
           test -n "${DESTINATION}" || (echo "destination is empty" && exit 1)
+          if [ -n "${YOUTUBE_SOURCE_MANIFEST}" ]; then
+            case "${YOUTUBE_SOURCE_MANIFEST}" in
+              sources/youtube/*.json) ;;
+              *) echo "source_manifest must be under sources/youtube/" && exit 1 ;;
+            esac
+            case "${YOUTUBE_SOURCE_MANIFEST}" in
+              *".."*) echo "source_manifest cannot contain .." && exit 1 ;;
+            esac
+            test -f "${YOUTUBE_SOURCE_MANIFEST}" || (echo "source_manifest not found" && exit 1)
+          else
+            test -n "${YOUTUBE_CHANNEL_URL}" || (echo "channel_url is empty" && exit 1)
+          fi
+
+      - name: Configure source-language transcription
+        if: inputs.source_manifest != ''
+        shell: bash
+        run: echo "WHISPER_INITIAL_PROMPT=" >> "$GITHUB_ENV"
 
       - name: Prepare workspace
         run: |
@@ -197,10 +225,12 @@ jobs:
       - name: Probe one known video format
         shell: bash
         run: |
-          yt-dlp -vU \
-            --remote-components ejs:github \
-            --cookies youtube_cookies.txt \
-            -F "https://www.youtube.com/watch?v=-ekkxGk3yQg" || true
+          if [ -s youtube_cookies.txt ]; then
+            yt-dlp -vU \
+              --remote-components ejs:github \
+              --cookies youtube_cookies.txt \
+              -F "https://www.youtube.com/watch?v=-ekkxGk3yQg" || true
+          fi
 
       - name: Run one video
         run: |
@@ -255,6 +285,7 @@ jobs:
             gh workflow run ".github/workflows/transcribe_youtube_channel.yml" \
               --ref "${GITHUB_REF_NAME}" \
               -f channel_url="${YOUTUBE_CHANNEL_URL}" \
+              -f source_manifest="${YOUTUBE_SOURCE_MANIFEST}" \
               -f destination="${DESTINATION}" \
               -f include_members="${YOUTUBE_INCLUDE_MEMBERS}" \
               -f whisper_model="${WHISPER_MODEL}" \

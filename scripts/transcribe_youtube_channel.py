@@ -18,6 +18,7 @@ from transcription_integrity import (
 )
 
 CHANNEL_URL = os.getenv("YOUTUBE_CHANNEL_URL", "").strip()
+SOURCE_MANIFEST_RAW = os.getenv("YOUTUBE_SOURCE_MANIFEST", "").strip()
 COOKIES_FILE = Path(os.getenv("YOUTUBE_COOKIES_FILE", "youtube_cookies.txt"))
 
 MODEL_NAME = os.getenv("WHISPER_MODEL", "medium")
@@ -209,6 +210,7 @@ def save_progress(status: str, note: str = "", current: Optional[Dict] = None, q
         "note": note,
         "destination": DESTINATION,
         "channel_url": clean_url(CHANNEL_URL),
+        "source_manifest": SOURCE_MANIFEST_RAW,
         "include_members": INCLUDE_MEMBERS,
         "queue_total": queue_total,
         "queue_index": queue_index,
@@ -274,6 +276,33 @@ def fetch_tab_entries(tab_url: str, use_cookies: bool) -> List[Dict]:
     return data.get("entries") or []
 
 
+def fetch_source_entries(source_url: str) -> List[Dict]:
+    source_url = clean_url(source_url)
+    host = (urlsplit(source_url).netloc or "").lower()
+    if host not in {"youtube.com", "www.youtube.com", "m.youtube.com", "youtu.be", "www.youtu.be"}:
+        raise ValueError(f"source manifest only supports YouTube URLs: {source_url}")
+
+    cmd = ["yt-dlp", "--remote-components", "ejs:github"]
+    add_cookie_arg(cmd)
+    cmd.extend(["--flat-playlist", "--dump-single-json", source_url])
+    result = subprocess.run(cmd, text=True, capture_output=True)
+    log("[cmd] " + " ".join(cmd))
+
+    if result.returncode != 0 or not (result.stdout or "").strip():
+        raise RuntimeError(f"failed to read YouTube source: {source_url}\n{(result.stderr or '').strip()}")
+    try:
+        data = json.loads(result.stdout)
+    except json.JSONDecodeError as exc:
+        raise RuntimeError(f"invalid yt-dlp JSON for source: {source_url}") from exc
+
+    entries = data.get("entries")
+    if entries is not None:
+        return entries
+    if data.get("id"):
+        return [data]
+    raise RuntimeError(f"YouTube source contains no videos: {source_url}")
+
+
 def build_item_from_entry(entry: Dict, tab: str) -> Optional[Dict]:
     video_id = (entry.get("id") or "").strip()
     if not video_id:
@@ -296,6 +325,42 @@ def build_item_from_entry(entry: Dict, tab: str) -> Optional[Dict]:
         "tab": tab,
         "duration": entry.get("duration"),
     }
+
+
+def build_queue_from_urls(urls: List[str], fetch_entries=fetch_source_entries) -> List[Dict]:
+    if not urls:
+        raise ValueError("source manifest urls must be a non-empty list")
+
+    queue = []
+    seen = set()
+    for source_url in urls:
+        if not isinstance(source_url, str) or not clean_url(source_url):
+            raise ValueError("source manifest urls must contain non-empty URL strings")
+        for entry in fetch_entries(source_url):
+            item = build_item_from_entry(entry, source_url)
+            if not item or item["id"] in seen:
+                continue
+            seen.add(item["id"])
+            queue.append(item)
+
+    if not queue:
+        raise RuntimeError("source manifest produced an empty queue")
+    return queue
+
+
+def extract_queue_from_manifest() -> List[Dict]:
+    manifest_path = Path(SOURCE_MANIFEST_RAW)
+    if manifest_path.is_absolute() or ".." in manifest_path.parts or manifest_path.parts[:2] != ("sources", "youtube"):
+        raise ValueError("source_manifest must be a repository-relative path under sources/youtube/")
+    if manifest_path.suffix.lower() != ".json" or not manifest_path.is_file():
+        raise FileNotFoundError(f"YouTube source manifest not found: {manifest_path}")
+    try:
+        data = json.loads(manifest_path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        raise ValueError(f"invalid JSON in YouTube source manifest: {manifest_path}") from exc
+    if not isinstance(data, dict) or not isinstance(data.get("urls"), list):
+        raise ValueError("YouTube source manifest must be a JSON object with a urls array")
+    return build_queue_from_urls(data["urls"])
 
 
 def extract_queue_from_channel() -> List[Dict]:
@@ -328,6 +393,7 @@ def write_manifest(queue: List[Dict]):
     payload = {
         "destination": DESTINATION,
         "channel_url": clean_url(CHANNEL_URL),
+        "source_manifest": SOURCE_MANIFEST_RAW,
         "include_members": INCLUDE_MEMBERS,
         "generated_at": time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()),
         "items": queue,
@@ -336,8 +402,12 @@ def write_manifest(queue: List[Dict]):
 
 
 def rebuild_queue() -> List[Dict]:
-    log("[info] rebuilding queue from youtube channel")
-    queue = extract_queue_from_channel()
+    if SOURCE_MANIFEST_RAW:
+        log(f"[info] rebuilding queue from source manifest: {SOURCE_MANIFEST_RAW}")
+        queue = extract_queue_from_manifest()
+    else:
+        log("[info] rebuilding queue from youtube channel")
+        queue = extract_queue_from_channel()
     save_json(QUEUE_FILE, queue)
     write_manifest(queue)
     log(f"[info] queue saved: {len(queue)} items")

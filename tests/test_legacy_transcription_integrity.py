@@ -135,6 +135,54 @@ class LegacyIntegrityTests(unittest.TestCase):
             with patch.object(module, "FORCE_RETRANSCRIBE", True):
                 self.assertEqual(module.find_next_item([item], set(), set()), item)
 
+    def test_youtube_source_manifest_combines_videos_and_playlist_without_duplicates(self):
+        module = load_script("transcribe_youtube_channel")
+        entries_by_url = {
+            "https://www.youtube.com/watch?v=video-1": [
+                {"id": "video-1", "title": "single video"},
+            ],
+            "https://www.youtube.com/playlist?list=playlist-1": [
+                {"id": "video-1", "title": "duplicate video"},
+                {"id": "video-2", "title": "playlist video"},
+            ],
+        }
+
+        queue = module.build_queue_from_urls(
+            list(entries_by_url),
+            fetch_entries=lambda url: entries_by_url[url],
+        )
+
+        self.assertEqual([item["id"] for item in queue], ["video-1", "video-2"])
+        self.assertEqual(queue[0]["title"], "single video")
+        self.assertEqual(queue[1]["url"], "https://www.youtube.com/watch?v=video-2")
+
+    def test_youtube_source_manifest_rejects_non_youtube_urls(self):
+        module = load_script("transcribe_youtube_channel")
+        with self.assertRaisesRegex(ValueError, "only supports YouTube"):
+            module.fetch_source_entries("https://example.com/video")
+
+    def test_youtube_source_entries_support_playlist_and_single_video_json(self):
+        module = load_script("transcribe_youtube_channel")
+        playlist = types.SimpleNamespace(
+            returncode=0,
+            stdout='{"entries":[{"id":"video-1","title":"playlist video"}]}',
+            stderr="",
+        )
+        single_video = types.SimpleNamespace(
+            returncode=0,
+            stdout='{"id":"video-2","title":"single video"}',
+            stderr="",
+        )
+        with patch.object(module.subprocess, "run", side_effect=[playlist, single_video]):
+            self.assertEqual(
+                module.fetch_source_entries("https://www.youtube.com/playlist?list=playlist-1"),
+                [{"id": "video-1", "title": "playlist video"}],
+            )
+            self.assertEqual(
+                module.fetch_source_entries("https://www.youtube.com/watch?v=video-2"),
+                [{"id": "video-2", "title": "single video"}],
+            )
+
     def test_pair_write_does_not_touch_old_files_when_staging_fails(self):
         with tempfile.TemporaryDirectory() as temp_dir:
             first = Path(temp_dir) / "ts" / "item.txt"
