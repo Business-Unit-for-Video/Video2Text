@@ -421,7 +421,14 @@ def is_item_completed(item: Dict) -> bool:
 def find_next_item(queue: List[Dict], done: set, failed: set) -> Optional[Dict]:
     for item in queue:
         vid = item["id"]
-        if vid in done or vid in failed or (not FORCE_RETRANSCRIBE and is_item_completed(item)):
+        # A forced retry is intended to retry both previously failed and
+        # previously completed items. Without this branch, failed.txt always
+        # wins and a workflow rerun can never exercise a refreshed cookie.
+        if vid in done and not FORCE_RETRANSCRIBE:
+            continue
+        if vid in failed and not FORCE_RETRANSCRIBE:
+            continue
+        if not FORCE_RETRANSCRIBE and is_item_completed(item):
             continue
         return item
     return None
