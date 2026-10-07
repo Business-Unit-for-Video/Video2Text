@@ -1,12 +1,16 @@
 {
   "status": "finished",
-  "note": "all items completed",
+  "note": "one video processed, no more pending",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "source_manifest": "",
   "include_members": false,
-  "queue_total": 1028,
-  "queue_index": 1028,
-  "updated_at": 1791311386,
-  "updated_at_readable": "2026-10-06 18:29:46"
+  "queue_total": 1029,
+  "queue_index": 1,
+  "updated_at": 1791353770,
+  "updated_at_readable": "2026-10-07 06:16:10",
+  "current_video_id": "NTdkK27s-uk",
+  "current_title": "WWII History: The Battle of Midway",
+  "current_url": "https://www.youtube.com/watch?v=NTdkK27s-uk",
+  "current_tab": "videos"
 }
