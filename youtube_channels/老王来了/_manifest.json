@@ -3,7 +3,7 @@
   "channel_url": "https://www.youtube.com/@dlw2023",
   "source_manifest": "",
   "include_members": false,
-  "generated_at": "2026-10-08 13:48:23",
+  "generated_at": "2026-10-08 23:27:49",
   "items": [
     {
       "id": "NTdkK27s-uk",
@@ -18,6 +18,13 @@
       "url": "https://www.youtube.com/watch?v=Z8Cre6HmTOc",
       "tab": "videos",
       "duration": 3179
+    },
+    {
+      "id": "ViajWLzn0K8",
+      "title": "林彪之死",
+      "url": "https://www.youtube.com/watch?v=ViajWLzn0K8",
+      "tab": "videos",
+      "duration": null
     },
     {
       "id": "V12gAQ_arPE",
@@ -2667,10 +2674,10 @@
     },
     {
       "id": "jEhlczmQrHA",
-      "title": "VIP直播：中国经济新增长模式深度解析",
+      "title": "VIP Livestream: An In-Depth Analysis of China's New Economic Growth Model",
       "url": "https://www.youtube.com/watch?v=jEhlczmQrHA",
       "tab": "streams",
-      "duration": 9423
+      "duration": 2670
     },
     {
       "id": "S_AEabJ67W8",
@@ -6244,7 +6251,7 @@
     },
     {
       "id": "JXfUp0KW82s",
-      "title": "200斤小本本不够用，缺席世界盟主大会！",
+      "title": "My 200-jin notebook isn't enough; missing the World Leaders' Summit!",
       "url": "https://www.youtube.com/watch?v=JXfUp0KW82s",
       "tab": "streams",
       "duration": 5535
