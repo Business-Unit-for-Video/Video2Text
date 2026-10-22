@@ -1,16 +1,12 @@
 {
   "status": "finished",
-  "note": "one video processed, no more pending",
+  "note": "all items completed",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "source_manifest": "",
   "include_members": false,
   "queue_total": 1042,
-  "queue_index": 387,
-  "updated_at": 1792646785,
-  "updated_at_readable": "2026-10-22 05:26:25",
-  "current_video_id": "FRoTx1pELVA",
-  "current_title": "加拿大政治科普：什么叫捧着金碗要饭，这次BC省选非常重要！听听列治文总票头的观点！",
-  "current_url": "https://www.youtube.com/watch?v=FRoTx1pELVA",
-  "current_tab": "streams"
+  "queue_index": 1042,
+  "updated_at": 1792670811,
+  "updated_at_readable": "2026-10-22 12:06:51"
 }
