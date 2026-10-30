@@ -1,16 +1,12 @@
 {
   "status": "finished",
-  "note": "one video processed, no more pending",
+  "note": "all items completed",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "source_manifest": "",
   "include_members": false,
   "queue_total": 1049,
-  "queue_index": 388,
-  "updated_at": 1793342449,
-  "updated_at_readable": "2026-10-30 06:40:49",
-  "current_video_id": "oSbOAdsc6r4",
-  "current_title": "长夜漫漫无心睡眠：习家族进入整肃自己人的时代：论栗战书被查与中国新稳态｜成为老王来了的会员",
-  "current_url": "https://www.youtube.com/watch?v=oSbOAdsc6r4",
-  "current_tab": "streams"
+  "queue_index": 1049,
+  "updated_at": 1793365972,
+  "updated_at_readable": "2026-10-30 13:12:52"
 }
