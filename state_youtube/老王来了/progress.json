@@ -1,12 +1,16 @@
 {
   "status": "finished",
-  "note": "all items completed",
+  "note": "one video processed, no more pending",
   "destination": "老王来了",
   "channel_url": "https://www.youtube.com/@dlw2023",
   "source_manifest": "",
   "include_members": false,
-  "queue_total": 1043,
-  "queue_index": 1043,
-  "updated_at": 1793399407,
-  "updated_at_readable": "2026-10-30 22:30:07"
+  "queue_total": 1035,
+  "queue_index": 381,
+  "updated_at": 1793427672,
+  "updated_at_readable": "2026-10-31 06:21:12",
+  "current_video_id": "kk93twRip8o",
+  "current_title": "周五读信：我的姥爷是出马仙｜如何安全跨境转移人民币财富｜女士们一定要对二婚男自带拖油瓶的毒性有充分研究｜心衰癌症患者的医保建议｜大陆年轻人想赚美股大钱的恐惧",
+  "current_url": "https://www.youtube.com/watch?v=kk93twRip8o",
+  "current_tab": "streams"
 }
