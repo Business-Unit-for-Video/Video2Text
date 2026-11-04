@@ -36,15 +36,12 @@ on:
         required: false
         default: false
         type: boolean
-  schedule:
-    - cron: "20 */6 * * *"
-
 permissions:
   contents: write
   actions: write
 
 concurrency:
-  group: youtube-channel-${{ inputs.destination || '老王来了' }}-${{ github.ref }}
+  group: youtube-channel-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
