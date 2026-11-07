@@ -14,6 +14,30 @@ Video2Text 用 GitHub Actions 自动转写和整理视频字幕，当前采用**
 | 构建检索切片 | `.github/workflows/build-transcript-chunks.yml` | 扫描带时间戳字幕，产出 `chunks.jsonl` artifact。 |
 | 统计字幕时长 | `.github/workflows/stat_transcripts_duration.yml` | 扫描带时间戳字幕，产出时长/字符统计 artifact。 |
 
+## 当前收录来源
+
+### B 站合集
+
+仓库 `destinations/` 下当前已有以下合集目录：
+
+- [AI大模型_小奕](destinations/AI大模型_小奕/)
+- [AI林湛星](destinations/AI林湛星/)
+- [IT技能树](destinations/IT技能树/)
+- [hermes](destinations/hermes/)
+- [openclaw](destinations/openclaw/)
+- [五里墩茶社](destinations/五里墩茶社/)
+- [人工智能前沿](destinations/人工智能前沿/)
+- [架构师阿Q](destinations/架构师阿Q/)
+- [过拟合青年](destinations/过拟合青年/)
+- [逆向工程](destinations/逆向工程/)
+- [阿斗来了](destinations/阿斗来了/)
+- [飞天闪客](destinations/飞天闪客/)
+
+### YouTube
+
+- **老王来了**（[@dlw2023](https://www.youtube.com/@dlw2023)）：YouTube 频道工作流默认扫描的频道。
+- **AI Growth Playbook** 和 **LLM and Agent Tutorials**：分别见 [ai-growth-playbook.json](sources/youtube/ai-growth-playbook.json) 和 [llm-agent-tutorials.json](sources/youtube/llm-agent-tutorials.json)。这两个清单目前包含相同的 7 个视频和 1 个播放列表，并非两个独立频道。
+
 ## 统一入口使用方式
 
 在 GitHub Actions 里运行 **transcribe-unified**，按任务类型填写参数：
