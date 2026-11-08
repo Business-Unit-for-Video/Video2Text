@@ -1,0 +1,16 @@
+{
+  "status": "done_one",
+  "note": "one video processed, more pending",
+  "destination": "资本的故事",
+  "channel_url": "https://www.youtube.com/playlist?list=PLfEXU4zp8nulQKU-5B3BL4Xz6rOlt95v_",
+  "source_manifest": "",
+  "include_members": false,
+  "queue_total": 60,
+  "queue_index": 1,
+  "updated_at": 1794142882,
+  "updated_at_readable": "2026-11-08 13:01:22",
+  "current_video_id": "iqxwIp5sp_g",
+  "current_title": "【资本的故事】 第一季第1集：股份的力量",
+  "current_url": "https://www.youtube.com/watch?v=iqxwIp5sp_g",
+  "current_tab": "https://www.youtube.com/playlist?list=PLfEXU4zp8nulQKU-5B3BL4Xz6rOlt95v_"
+}
