@@ -1,0 +1,6 @@
+video_id: C4j3VZLOHXk
+title: 【央视纪录片】《华尔街》【高清10集全】09拯救危机
+url: https://www.youtube.com/watch?v=C4j3VZLOHXk
+tab: https://www.youtube.com/playlist?list=PL3TkKpqRdrCMy8SsZLuCFGnIwNO3GRyTZ
+time: 2026-11-08 15:15:06
+error: CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--extractor-args', 'youtube:player_client=android;formats=missing_pot', '--no-playlist', '-f', 'ba/bestaudio/best', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/华尔街/C4j3VZLOHXk.%(ext)s', 'https://www.youtube.com/watch?v=C4j3VZLOHXk'])
