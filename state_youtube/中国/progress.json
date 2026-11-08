@@ -1,0 +1,16 @@
+{
+  "status": "done_one",
+  "note": "one video processed, more pending",
+  "destination": "中国",
+  "channel_url": "https://www.youtube.com/playlist?list=PLqi_HIn6wIRHTEYd_wHZB-qDVNAbKDxCT",
+  "source_manifest": "",
+  "include_members": false,
+  "queue_total": 12,
+  "queue_index": 1,
+  "updated_at": 1794142878,
+  "updated_at_readable": "2026-11-08 13:01:18",
+  "current_video_id": "byjBNKyQXJ0",
+  "current_title": "【ENG SUB】China EP1: Spring and Autumn Period time丨MGTV",
+  "current_url": "https://www.youtube.com/watch?v=byjBNKyQXJ0",
+  "current_tab": "https://www.youtube.com/playlist?list=PLqi_HIn6wIRHTEYd_wHZB-qDVNAbKDxCT"
+}
