@@ -1,0 +1,16 @@
+{
+  "status": "done_one",
+  "note": "one video processed, more pending",
+  "destination": "世界历史",
+  "channel_url": "https://www.youtube.com/playlist?list=PLBNi7PBNvfoiMdIp0SUT1jhuQ9f8ic0zJ",
+  "source_manifest": "",
+  "include_members": false,
+  "queue_total": 100,
+  "queue_index": 1,
+  "updated_at": 1794142281,
+  "updated_at_readable": "2026-11-08 12:51:21",
+  "current_video_id": "hM5dkqDfwWQ",
+  "current_title": "01 人类历史的开端 石器时代的人们",
+  "current_url": "https://www.youtube.com/watch?v=hM5dkqDfwWQ",
+  "current_tab": "https://www.youtube.com/playlist?list=PLBNi7PBNvfoiMdIp0SUT1jhuQ9f8ic0zJ"
+}
