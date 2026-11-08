@@ -41,7 +41,7 @@ permissions:
   actions: write
 
 concurrency:
-  group: youtube-channel-${{ github.ref }}
+  group: youtube-channel-${{ inputs.destination || github.run_id }}-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
