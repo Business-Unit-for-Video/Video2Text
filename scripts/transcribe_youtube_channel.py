@@ -179,6 +179,8 @@ def normalize_channel_url(url: str) -> str:
         raise ValueError("YOUTUBE_CHANNEL_URL is empty")
 
     parts = urlsplit(url)
+    if "list=" in parts.query:
+        return url
     clean_path = parts.path.rstrip("/")
     clean_path = re.sub(r"/(videos|streams|shorts|live|featured|playlists)$", "", clean_path)
     return urlunsplit((parts.scheme or "https", parts.netloc, clean_path, "", ""))
@@ -364,6 +366,14 @@ def extract_queue_from_manifest() -> List[Dict]:
 
 
 def extract_queue_from_channel() -> List[Dict]:
+    if "list=" in urlsplit(clean_url(CHANNEL_URL)).query:
+        log("[info] source is a YouTube playlist; using playlist extractor")
+        queue = build_queue_from_urls([CHANNEL_URL])
+        save_json(QUEUE_FILE, queue)
+        write_manifest(queue)
+        log(f"[info] queue saved: {len(queue)} items")
+        return queue
+
     base = normalize_channel_url(CHANNEL_URL)
 
     use_cookies_for_listing = INCLUDE_MEMBERS
