@@ -1,0 +1,6 @@
+video_id: XBNCjFqNhMw
+title: 《中国通史》E13孔子/天不生仲尼，万古如长夜？
+url: https://www.youtube.com/watch?v=XBNCjFqNhMw
+tab: https://www.youtube.com/playlist?list=PLcvRvOh71AhKNf2_UYZwezQgFjsAUandM
+time: 2026-11-08 15:51:31
+error: CalledProcessError(1, ['git', 'push', 'origin', 'HEAD:main'])
