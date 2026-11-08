@@ -1,0 +1,65 @@
+{
+  "destination": "大国重器2",
+  "channel_url": "https://www.youtube.com/playlist?list=PLinO3Bage4cl5IxosrKUENoI-yM-5K8q-",
+  "source_manifest": "",
+  "include_members": false,
+  "generated_at": "2026-11-08 12:58:15",
+  "items": [
+    {
+      "id": "Fi3ebl21Yos",
+      "title": "《大国重器（第二季）》 第一集 构筑基石 | CCTV财经",
+      "url": "https://www.youtube.com/watch?v=Fi3ebl21Yos",
+      "tab": "https://www.youtube.com/playlist?list=PLinO3Bage4cl5IxosrKUENoI-yM-5K8q-",
+      "duration": 3000
+    },
+    {
+      "id": "A_7lhQ7A9vo",
+      "title": "《大国重器（第二季）》 第二集 发动中国 迈向航空航天强国 | CCTV财经",
+      "url": "https://www.youtube.com/watch?v=A_7lhQ7A9vo",
+      "tab": "https://www.youtube.com/playlist?list=PLinO3Bage4cl5IxosrKUENoI-yM-5K8q-",
+      "duration": 3000
+    },
+    {
+      "id": "AAdlsbwc8kc",
+      "title": "《大国重器（第二季）》 第三集 通达天下 | CCTV财经",
+      "url": "https://www.youtube.com/watch?v=AAdlsbwc8kc",
+      "tab": "https://www.youtube.com/playlist?list=PLinO3Bage4cl5IxosrKUENoI-yM-5K8q-",
+      "duration": 3000
+    },
+    {
+      "id": "tphvqJZ5mIE",
+      "title": "《大国重器（第二季）》 第四集 造血通脉 | CCTV财经",
+      "url": "https://www.youtube.com/watch?v=tphvqJZ5mIE",
+      "tab": "https://www.youtube.com/playlist?list=PLinO3Bage4cl5IxosrKUENoI-yM-5K8q-",
+      "duration": 2999
+    },
+    {
+      "id": "AC7u6DWS050",
+      "title": "《大国重器（第二季）》 第五集 布局海洋 | CCTV财经",
+      "url": "https://www.youtube.com/watch?v=AC7u6DWS050",
+      "tab": "https://www.youtube.com/playlist?list=PLinO3Bage4cl5IxosrKUENoI-yM-5K8q-",
+      "duration": 3000
+    },
+    {
+      "id": "enOHxoyhN6s",
+      "title": "《大国重器（第二季）》 第六集 赢在互联 | CCTV财经",
+      "url": "https://www.youtube.com/watch?v=enOHxoyhN6s",
+      "tab": "https://www.youtube.com/playlist?list=PLinO3Bage4cl5IxosrKUENoI-yM-5K8q-",
+      "duration": 3000
+    },
+    {
+      "id": "BU4FWI00LB4",
+      "title": "《大国重器（第二季）》 第七集 智造先锋 | CCTV财经",
+      "url": "https://www.youtube.com/watch?v=BU4FWI00LB4",
+      "tab": "https://www.youtube.com/playlist?list=PLinO3Bage4cl5IxosrKUENoI-yM-5K8q-",
+      "duration": 2990
+    },
+    {
+      "id": "4zqa1eCXMVU",
+      "title": "《大国重器（第二季）》 第八集 创新体系 | CCTV财经",
+      "url": "https://www.youtube.com/watch?v=4zqa1eCXMVU",
+      "tab": "https://www.youtube.com/playlist?list=PLinO3Bage4cl5IxosrKUENoI-yM-5K8q-",
+      "duration": 3000
+    }
+  ]
+}
