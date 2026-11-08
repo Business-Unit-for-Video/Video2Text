@@ -1,0 +1,16 @@
+{
+  "status": "done_one",
+  "note": "one video processed, more pending",
+  "destination": "货币",
+  "channel_url": "https://www.youtube.com/playlist?list=PL37SJKHxVEKpUsoZ0oogc0108SBjK6X4E",
+  "source_manifest": "",
+  "include_members": false,
+  "queue_total": 7,
+  "queue_index": 1,
+  "updated_at": 1794143678,
+  "updated_at_readable": "2026-11-08 13:14:38",
+  "current_video_id": "Rx620wYTt6g",
+  "current_title": "央視大型紀錄片《貨幣》第一集：有價的星球",
+  "current_url": "https://www.youtube.com/watch?v=Rx620wYTt6g",
+  "current_tab": "https://www.youtube.com/playlist?list=PL37SJKHxVEKpUsoZ0oogc0108SBjK6X4E"
+}
