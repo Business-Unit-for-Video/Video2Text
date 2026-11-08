@@ -1,0 +1,6 @@
+video_id: QHFDBy5eIcY
+title: 【ENG SUB】China EP2: Hundred Schools of Thought丨MGTV
+url: https://www.youtube.com/watch?v=QHFDBy5eIcY
+tab: https://www.youtube.com/playlist?list=PLqi_HIn6wIRHTEYd_wHZB-qDVNAbKDxCT
+time: 2026-11-08 13:17:52
+error: CalledProcessError(1, ['yt-dlp', '--remote-components', 'ejs:github', '--extractor-args', 'youtube:player_client=android;formats=missing_pot', '--no-playlist', '-f', 'ba/bestaudio/best', '-x', '--audio-format', 'mp3', '--audio-quality', '7', '-o', 'tmp_audio/中国/QHFDBy5eIcY.%(ext)s', 'https://www.youtube.com/watch?v=QHFDBy5eIcY'])
