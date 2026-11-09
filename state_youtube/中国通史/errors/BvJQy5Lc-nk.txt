@@ -1,0 +1,6 @@
+video_id: BvJQy5Lc-nk
+title: ​​《中国通史》E58宋金和战/铁骑南侵与岳飞悲歌
+url: https://www.youtube.com/watch?v=BvJQy5Lc-nk
+tab: https://www.youtube.com/playlist?list=PLcvRvOh71AhKNf2_UYZwezQgFjsAUandM
+time: 2026-11-09 03:09:35
+error: CalledProcessError(1, ['git', 'push', 'origin', 'HEAD:main'])
